@@ -1,6 +1,9 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "framework": null,
+  "buildCommand": null,
+  "installCommand": null,
   "headers": [
     {
       "source": "/assets/:path*",
