@@ -1,12 +1,45 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "framework": null,
-  "buildCommand": null,
-  "installCommand": null,
   "headers": [
     {
-      "source": "/(assets|.*\\.(png|jpg|jpeg|gif|svg|ico|css|js))",
+      "source": "/assets/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/styles.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/script.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/Manoj_Resume.pdf",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/Manoj_ Portfolio.pdf",
       "headers": [
         {
           "key": "Cache-Control",
