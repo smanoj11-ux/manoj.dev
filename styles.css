@@ -1175,12 +1175,14 @@ h1, h2, h3, h4 {
     justify-content: center;
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
     transition: var(--transition-smooth);
 }
 
 .modal-overlay.active {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
 }
 
 .modal-card {
