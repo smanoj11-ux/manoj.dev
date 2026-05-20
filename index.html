@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons (Sleek Modern icons) -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -91,25 +91,7 @@
             </div>
         </section>
 
-        <!-- Stats Bar -->
-        <section class="stats-bar container">
-            <div class="stat-card">
-                <span class="stat-num">90%+</span>
-                <span class="stat-desc">Production Time Saved</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-num">4</span>
-                <span class="stat-desc">Strategic Pillars</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-num">30k+</span>
-                <span class="stat-desc">Lines of Vibe-Coded JS</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-num">24h</span>
-                <span class="stat-desc">Concept-to-Deploy Cycle</span>
-            </div>
-        </section>
+
 
         <!-- About / Core Philosophy Section -->
         <section class="about container" id="about">
@@ -142,28 +124,33 @@
                     </div>
                 </div>
                 
-                <div class="about-visual-panel glass-card">
-                    <div class="mockup-header">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
-                        <span class="mockup-title">manoj_architecture.json</span>
+                <div class="about-visual-panel glass-card generative-art-panel">
+                    <div class="art-card-header">
+                        <div class="art-title-area">
+                            <span class="art-tag">Dynamic Art Engine</span>
+                            <h4>Abstract Flow Synthesis</h4>
+                        </div>
+                        <button id="regenerate-art-btn" class="art-action-btn" title="Generate new abstract seed">
+                            <i data-lucide="refresh-cw"></i> Regenerate
+                        </button>
                     </div>
-                    <div class="mockup-body code-text">
-                        <pre><code>{
-  <span class="key">"name"</span>: <span class="val">"Manoj"</span>,
-  <span class="key">"role"</span>: <span class="val">"AI Architect & Builder"</span>,
-  <span class="key">"approach"</span>: [
-    <span class="val">"Progressive Disclosure"</span>,
-    <span class="val">"Multi-Model Synthesis"</span>,
-    <span class="val">"Vibe Coding Rigor"</span>
-  ],
-  <span class="key">"pipeline_efficiency"</span>: {
-    <span class="key">"studio_photography"</span>: <span class="val">"-93% cost"</span>,
-    <span class="key">"deployment_speed"</span>: <span class="val">"24h turnaround"</span>,
-    <span class="key">"quality_assurance"</span>: <span class="val">"CLIP validation score 92%+"</span>
-  }
-}</code></pre>
+                    <div class="canvas-container">
+                        <canvas id="generative-canvas"></canvas>
+                        <!-- Sleek overlay stats for that premium UI feel -->
+                        <div class="canvas-overlay-stats">
+                            <div class="overlay-stat">
+                                <span class="lbl">Seed</span>
+                                <span class="val" id="art-seed-val">#4A90E2</span>
+                            </div>
+                            <div class="overlay-stat">
+                                <span class="lbl">Complexity</span>
+                                <span class="val" id="art-vector-val">420</span>
+                            </div>
+                            <div class="overlay-stat">
+                                <span class="lbl">Mode</span>
+                                <span class="val">Flow Field</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -214,8 +201,8 @@
                     <div class="showcase-grid">
                         <div class="showcase-panel reveal">
                             <div class="showcase-image-container">
-                                <img src="assets/pillar1_agent_builder.webp"
-                                    alt="Agentic Flow Builder" loading="lazy">
+                                <img src="assets/metamask_flow.png"
+                                    alt="MetaMask Web3 Wallet Flow" loading="lazy">
                                 <div class="showcase-hud">
                                     <div class="hud-corner hud-tl"></div>
                                     <div class="hud-corner hud-tr"></div>
@@ -223,23 +210,21 @@
                                     <div class="hud-corner hud-br"></div>
                                     <div class="hud-scanline"></div>
                                 </div>
-                                <div class="showcase-tag-float">AI Systems</div>
+                                <div class="showcase-tag-float">Web3 / Crypto</div>
                             </div>
                             <div class="showcase-info">
                                 <span class="showcase-index">01</span>
-                                <h4>Agentic Flow Builder</h4>
-                                <p class="showcase-subtitle">Visual node editor for multi-agent orchestration</p>
-                                <p class="showcase-desc">Drag-and-drop pipeline builder for composing AI agents,
-                                    featuring real-time execution tracing, conditional branching, and modular
-                                    tool-call visualization across LLM providers.</p>
+                                <h4>MetaMask Wallet Flow</h4>
+                                <p class="showcase-subtitle">Seamless Web3 onboarding and transaction UI</p>
+                                <p class="showcase-desc">A high-fidelity redesign of the MetaMask wallet experience, featuring a sleek glassmorphic UI, real-time gas fee estimation, and an intuitive token swap interface built for the modern decentralized web.</p>
                                 <div class="showcase-metrics-row">
                                     <div class="showcase-metric-block">
-                                        <span class="metric-val">15+</span>
-                                        <span class="metric-lbl">Agent Node Types</span>
+                                        <span class="metric-val">100+</span>
+                                        <span class="metric-lbl">Tokens Supported</span>
                                     </div>
                                     <div class="showcase-metric-block">
                                         <span class="metric-val">Real-time</span>
-                                        <span class="metric-lbl">Execution Tracing</span>
+                                        <span class="metric-lbl">Gas Estimation</span>
                                     </div>
                                 </div>
                                 <button class="btn btn-secondary btn-block btn-open-modal"
@@ -378,8 +363,8 @@
                     <div class="showcase-grid">
                         <div class="showcase-panel reveal">
                             <div class="showcase-image-container">
-                                <img src="assets/pillar3_music_video.webp"
-                                    alt="Multi-Model AI Music Video" loading="lazy">
+                                <img src="assets/pillar3_fashion_film.png"
+                                    alt="AI Cyberpunk Fashion Film" loading="lazy">
                                 <div class="showcase-hud">
                                     <div class="hud-corner hud-tl"></div>
                                     <div class="hud-corner hud-tr"></div>
@@ -391,19 +376,17 @@
                             </div>
                             <div class="showcase-info">
                                 <span class="showcase-index">01</span>
-                                <h4>Multi-Model AI Music Video</h4>
-                                <p class="showcase-subtitle">"Neon Mantra" — full production narrative</p>
-                                <p class="showcase-desc">A full 3:30 spiritual psytrance music video utilizing
-                                    Midjourney, Kling, and Runway, mapped onto a beat-synced timestamp script with
-                                    high-fidelity camera angles.</p>
+                                <h4>AI Cyberpunk Fashion Film</h4>
+                                <p class="showcase-subtitle">"Neon Runway" — digital couture showcase</p>
+                                <p class="showcase-desc">A high-fashion runway visual campaign generated using Kling and Runway Gen-3, featuring hyper-detailed synthetic models wearing glowing smart-fabrics.</p>
                                 <div class="showcase-metrics-row">
                                     <div class="showcase-metric-block">
-                                        <span class="metric-val">3:30</span>
-                                        <span class="metric-lbl">Full Video Length</span>
+                                        <span class="metric-val">1.2M+</span>
+                                        <span class="metric-lbl">Organic Views</span>
                                     </div>
                                     <div class="showcase-metric-block">
-                                        <span class="metric-val">24</span>
-                                        <span class="metric-lbl">Shots with Face Lock</span>
+                                        <span class="metric-val">18</span>
+                                        <span class="metric-lbl">Generated Looks</span>
                                     </div>
                                 </div>
                                 <button class="btn btn-secondary btn-block btn-open-modal"
@@ -413,8 +396,8 @@
 
                         <div class="showcase-panel showcase-reverse reveal">
                             <div class="showcase-image-container">
-                                <img src="assets/pillar3_jewelry_lookbook.webp"
-                                    alt="Luxury Brand Lookbook" loading="lazy">
+                                <img src="assets/pillar3_scifi_trailer.png"
+                                    alt="AI Sci-Fi Cinematic Trailer" loading="lazy">
                                 <div class="showcase-hud">
                                     <div class="hud-corner hud-tl"></div>
                                     <div class="hud-corner hud-tr"></div>
@@ -422,23 +405,21 @@
                                     <div class="hud-corner hud-br"></div>
                                     <div class="hud-scanline"></div>
                                 </div>
-                                <div class="showcase-tag-float">Luxury Brand</div>
+                                <div class="showcase-tag-float">Sci-Fi Concept</div>
                             </div>
                             <div class="showcase-info">
                                 <span class="showcase-index">02</span>
-                                <h4>AI Luxury Jewelry Lookbook</h4>
-                                <p class="showcase-subtitle">Cinematic product storytelling for high-end brands</p>
-                                <p class="showcase-desc">A photorealistic AI-generated lookbook combining Midjourney
-                                    renders with cinematic lighting direction, model compositing, and luxury editorial
-                                    layouts for a jewelry brand pitch.</p>
+                                <h4>AI Sci-Fi Cinematic Trailer</h4>
+                                <p class="showcase-subtitle">"Kepler-186f" — cinematic concept teaser</p>
+                                <p class="showcase-desc">A cinematic concept teaser utilizing Midjourney and Runway Gen-3 to render photorealistic alien landscapes, massive space structures, and cosmic storms.</p>
                                 <div class="showcase-metrics-row">
                                     <div class="showcase-metric-block">
-                                        <span class="metric-val">48</span>
-                                        <span class="metric-lbl">AI-Generated Frames</span>
+                                        <span class="metric-val">98%</span>
+                                        <span class="metric-lbl">Consistent Geometry</span>
                                     </div>
                                     <div class="showcase-metric-block">
-                                        <span class="metric-val">Zero</span>
-                                        <span class="metric-lbl">Real Photography Used</span>
+                                        <span class="metric-val">45</span>
+                                        <span class="metric-lbl">Storyboard Scenes</span>
                                     </div>
                                 </div>
                                 <button class="btn btn-secondary btn-block btn-open-modal"
@@ -459,15 +440,15 @@
                         </div>
                     </div>
 
-                    <div class="vibe-coding-promo reveal glass-card" style="text-align: center; padding: 60px 40px; margin-top: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
-                        <div class="clay-shape-static" style="width: 80px; height: 80px; background: var(--gradient-button); border-radius: 50px; display: flex; align-items: center; justify-content: center; border: 3px solid var(--border-color); box-shadow: 4px 4px 0px var(--border-color); margin-bottom: 10px;">
-                            <i data-lucide="code-2" style="width: 40px; height: 40px; color: var(--text-main);"></i>
+                    <div class="vibe-coding-promo reveal glass-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 60px 40px; margin-top: 40px;">
+                        <div class="glass-icon-wrapper" style="width: 80px; height: 80px; background: var(--glass-surface-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); margin-bottom: 10px;">
+                            <i data-lucide="code-2" style="width: 40px; height: 40px; color: var(--accent-primary);"></i>
                         </div>
-                        <h4 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin: 0;">Interactive Vibe Coding Portfolio</h4>
-                        <p style="font-family: var(--font-body); font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0; line-height: 1.6;">
+                        <h4 style="font-size: 2.2rem; margin: 0;">Interactive Vibe Coding Portfolio</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0; line-height: 1.6;">
                             Explore a live, high-fidelity gallery of experimental applications engineered entirely using AI-assisted workflow loops. Shipped continuously to production, featuring real-time Web Audio API integrations, interactive sound synthesizers, and serverless vector workspaces.
                         </p>
-                        <a href="https://manoj-vibecoding-portfolio.vercel.app/" target="_blank" class="btn btn-primary btn-lg" id="btn-launch-vibecoding" style="display: inline-flex; align-items: center; gap: 10px; margin-top: 15px; border: 3px solid var(--border-color); box-shadow: 6px 6px 0px var(--border-color);">
+                        <a href="https://manoj-vibecoding-portfolio.vercel.app/" target="_blank" class="btn btn-primary btn-lg" id="btn-launch-vibecoding" style="display: inline-flex; align-items: center; gap: 10px; margin-top: 15px;">
                             <i data-lucide="external-link"></i> Launch Vibe Coded Portfolio
                         </a>
                     </div>
@@ -532,20 +513,24 @@
                 </div>
 
                 <div class="contact-form-panel glass-card">
-                    <form id="portfolio-contact-form">
+                    <form id="portfolio-contact-form" action="https://formsubmit.co/smanoj11@gmail.com" method="POST">
+                        <!-- Disable Captcha -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="New Portfolio Signal">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="form-name">Full Name</label>
-                                <input type="text" id="form-name" required placeholder="John Doe">
+                                <input type="text" id="form-name" name="name" required placeholder="John Doe">
                             </div>
                             <div class="form-group">
                                 <label for="form-email">Email Address</label>
-                                <input type="email" id="form-email" required placeholder="john@example.com">
+                                <input type="email" id="form-email" name="email" required placeholder="john@example.com">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="form-subject">Select Pillar of Interest</label>
-                            <select id="form-subject">
+                            <select id="form-subject" name="pillar">
                                 <option value="uiux">UI/UX & Systems Design</option>
                                 <option value="automation">AI Workflow Automation</option>
                                 <option value="creative">AI Video & Lookbooks</option>
@@ -555,7 +540,7 @@
                         </div>
                         <div class="form-group">
                             <label for="form-message">System Brief / Message</label>
-                            <textarea id="form-message" rows="5" required placeholder="Describe your architectural requirements, project specs, or message..."></textarea>
+                            <textarea id="form-message" name="message" rows="5" required placeholder="Describe your architectural requirements, project specs, or message..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-primary btn-block" id="btn-submit-form">

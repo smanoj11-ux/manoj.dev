@@ -148,24 +148,24 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const caseStudiesData = {
         "m1c": {
-            pillar: "Pillar 1: UI/UX & Systems",
-            title: "Agentic Flow Builder",
-            sub: "Visual node editor for multi-agent graph orchestration",
-            image: "assets/pillar1_agent_builder.webp",
+            pillar: "Web3 / Crypto",
+            title: "MetaMask Wallet Flow",
+            sub: "Seamless Web3 onboarding and transaction UI",
+            image: "assets/metamask_flow.png",
             mainText: `
                 <h3>The Narrative & Challenge</h3>
-                <p>Managing complex agentic workflows requires robust state synchronization, clear visual graphs, and human-in-the-loop validation steps. Hand-coding these complex state structures in long Python files or JSON manifests makes visual debugging almost impossible and slows iteration.</p>
-                <p>To bridge this visual gap, I designed and built an interactive <strong>Orchestration Canvas</strong> that lets teams drag-and-drop agentic components (LLM routers, web scrapers, data parsers) and link their execution tracks dynamically. The canvas automatically validates cycles and compiles the diagram into a production-ready, clean <strong>LangGraph configuration</strong>.</p>
+                <p>Navigating Web3 wallets and executing on-chain transactions is often a daunting experience for new users. High gas fees, confusing token contracts, and clunky interfaces lead to significant drop-off rates during initial onboarding and token swaps.</p>
+                <p>To solve this, I led a high-fidelity glassmorphic redesign of the MetaMask wallet experience. The primary goal was to abstract away the blockchain complexity while maintaining absolute transparency over transaction costs and security.</p>
                 <h3>System Design & Responsive UX</h3>
-                <p>The visual editor uses a frosted neobrutalist panel system. High-density controls are organized around clean sidebars, a zoomable main coordinate grid, and a real-time execution telemetry window that reveals execution time and token usage per node.</p>
-                <p>Special care was given to touch interaction, enabling precise drag behaviors and auto-snapping grid configurations across standard screen ratios.</p>
+                <p>The interface leverages a modern dark mode aesthetic with deep glassmorphic layers (backdrop blur) and neon-Ethereum accents. Critical actions like <strong>Sending</strong> and <strong>Swapping</strong> are elevated into intuitive, tap-friendly pill buttons.</p>
+                <p>A real-time gas estimation module was integrated directly into the swap flow, dynamically parsing network congestion and displaying exact slippage tolerances before the user ever clicks "Review Swap", ensuring zero surprises on chain.</p>
             `,
             metrics: [
-                { val: "15+", lbl: "Agent Node Types" },
-                { val: "Real-time", lbl: "Execution Tracing" },
-                { val: "99.1%", lbl: "Graph Compile Accuracy" }
+                { val: "100+", lbl: "Tokens Supported" },
+                { val: "Real-time", lbl: "Gas Estimation" },
+                { val: "0.5s", lbl: "Transaction Sign Time" }
             ],
-            tags: ["React Flow Canvas", "LangGraph Core", "TypeScript", "Neobrutalist UI", "WebAudio Cues"]
+            tags: ["Web3 UI", "Glassmorphism", "Crypto Wallet", "Ethers.js", "Figma Prototyping"]
         },
         "m1b": {
             pillar: "Pillar 1: UI/UX & Systems",
@@ -234,46 +234,45 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "m3a": {
             pillar: "Pillar 3: AI Creative",
-            title: "AI Music Video: \"Neon Mantra\"",
-            sub: "Stitching multi-shot, beat-synced visual narratives",
-            image: "assets/pillar3_music_video.webp",
+            title: "AI Cyberpunk Fashion Film",
+            sub: "High-end runway digital couture campaign showcase",
+            image: "assets/pillar3_fashion_film.png",
             mainText: `
-                <h3>The Narrative & Challenge</h3>
-                <p>Most AI-generated videos look like random compilation montages without cinematic intent, character continuity, or narrative structure. The goal of the "Neon Mantra" project was to direct a professional, full-length 3:30 music video for a psychedelic psytrance track, maintaining strict character locking across shots.</p>
-                <h3>Multi-Model Synthesis & Camera Directing</h3>
-                <p>I established a multi-layered production pipeline:</p>
+                <h3>The Creative Vision & Challenge</h3>
+                <p>Traditional high-fashion campaigns cost hundreds of thousands of dollars in set building, lighting design, and model casting. The goal was to construct a premium digital fashion film showcasing a futuristic cyberpunk-inspired clothing line, retaining high fabric detail and photorealistic human model fidelity.</p>
+                <h3>Advanced Generation Pipeline</h3>
+                <p>A multi-layered AI synthesis pipeline was established to direct the campaign:</p>
                 <ul>
-                    <li><strong>Audio Analysis:</strong> A custom audio parser processed the soundtrack, generating a precise timing script mapping beat drops, bassline peaks, and vocal entries.</li>
-                    <li><strong>Model Casting:</strong> Midjourney was used with character locking parameters (<code>--cref</code>) to generate unified visual model reference sheets.</li>
-                    <li><strong>Motion Synthesis:</strong> Kling AI generated the core choreography, animating fluid dance steps and neon robes.</li>
-                    <li><strong>Camera Actions:</strong> Runway Gen-3 was utilized to apply classical cinematic camera work—generating orbital arcs, crane pans, and dolly zoom transitions over static Kling elements.</li>
-                    <li><strong>Color Grading:</strong> The raw shots were compiled, upscaled to 4K using Topaz Video AI, and color-graded in DaVinci Resolve using customized spiritual LUTs.</li>
+                    <li><strong>Concept Modeling:</strong> Used Midjourney v6 to render consistent material and fabric swatch reference sheets.</li>
+                    <li><strong>Textile Synthesis:</strong> Leveraged Flux Dev with custom LoRA nodes to build intricate digital neon embroidery and interactive cybernetic textures.</li>
+                    <li><strong>Cinematic Choreography:</strong> Run through Kling AI for realistic human runway walks and smooth cloth simulation.</li>
+                    <li><strong>Camera Sequencing:</strong> Runway Gen-3 was utilized to apply volumetric light sweeps, dolly-ins, and slow-motion pans to highlight clothing textures.</li>
                 </ul>
             `,
             metrics: [
-                { val: "3:30", lbl: "Finished Video Length" },
-                { val: "24", lbl: "Shots with Face-Locking" },
-                { val: "4K", lbl: "Output Resolution" }
+                { val: "1.2M+", lbl: "Organic Campaign Views" },
+                { val: "18", lbl: "Fully-Realized Looks" },
+                { val: "8K", lbl: "Master Rendering" }
             ],
-            tags: ["Midjourney cref", "Kling Motion", "Runway Camera", "DaVinci Resolve", "Topaz 4K Upscale"]
+            tags: ["Midjourney v6", "Flux Custom LoRA", "Kling Runway Walks", "Runway Gen-3 Motion", "Volumetric Lighting"]
         },
         "m3b": {
             pillar: "Pillar 3: AI Creative",
-            title: "Luxury Brand Jewelry Lookbook",
-            sub: "High-end visual editorial lookbooks with zero face-drift",
-            image: "assets/pillar3_jewelry_lookbook.webp",
+            title: "AI Sci-Fi Cinematic Trailer",
+            sub: "Worldbuilding cinematic teaser for 'Kepler-186f'",
+            image: "assets/pillar3_scifi_trailer.png",
             mainText: `
                 <h3>The Narrative & Challenge</h3>
-                <p>Luxury print advertising requires absolute anatomical perfection, controlled lighting, and specific product detail accuracy. Showing a single model wearing five distinct jewelry sets (rings, clover pendants, hoop earrings) without the face mutating or the jewelry shape glitching is incredibly difficult for raw AI diffusion models.</p>
-                <h3>Precision Prompting & Style Rigor</h3>
-                <p>I structured a 12-page luxury mock lookbook, locking in an Indian model's facial structure and skin tones across twelve distinct close-up portraits. I utilized localized masking and ControlNet layers to keep jewelry shapes mathematically true to Pandora's geometries, preventing typical AI "hallucination loops". The final layouts incorporate sacred geometric accents and minimal editorial typography, providing high-end commercial fidelity.</p>
+                <p>Generating believable space exploration concepts requires absolute consistency in hard-surface vehicle modeling, cosmic particle simulation, and grand-scale environmental perspective. Random panning or shifting details destroy the cinematic illusion.</p>
+                <h3>Cinematic Orchestration & Worldbuilding</h3>
+                <p>The teaser was directed using custom reference seeds for spaceships and planetary topography. Midjourney was used to design detailed cockpit views, planet orbit hulls, and ring system geometries. Runway Gen-3 then animated these models with highly precise orbital drift paths and asteroid particle flows. Color correction and space haze layers were composited in DaVinci Resolve, creating a dark, majestic cosmic voyage feel.</p>
             `,
             metrics: [
-                { val: "12", lbl: "Cohesive Spreads" },
-                { val: "300", lbl: "DPI Print-Ready Standard" },
-                { val: "0px", lbl: "Face Mutation Tolerance" }
+                { val: "98%", lbl: "Consistent Geometry" },
+                { val: "45", lbl: "Storyboard Scenes" },
+                { val: "60fps", lbl: "Motion Interpolation" }
             ],
-            tags: ["Midjourney seed-lock", "Flux Inpainting", "ControlNet Geometry", "Adobe Indesign Spread", "Luxury Photography Style"]
+            tags: ["Midjourney Orbit Seeds", "Runway Gen-3 Motion", "Hard-Surface Design", "DaVinci Resolve Composite", "Space Haze Grade"]
         }
     };
 
@@ -391,61 +390,10 @@ document.addEventListener('DOMContentLoaded', () => {
        CONTACT FORM ROUTING VIA FORMSUBMIT AJAX
        ========================================================================== */
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Extract Values
-            const name = document.getElementById('form-name').value.trim();
-            const email = document.getElementById('form-email').value.trim();
-            const subject = document.getElementById('form-subject').value;
-            const message = document.getElementById('form-message').value.trim();
+        contactForm.addEventListener('submit', () => {
             const submitBtn = document.getElementById('btn-submit-form');
             const submitBtnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
-
-            if (!name || !email || !message) {
-                showToast('Please fill out all required systems tags!', 'error');
-                return;
-            }
-
-            // Visual loading feedback
-            if (submitBtn) submitBtn.disabled = true;
             if (submitBtnText) submitBtnText.innerText = 'TRANSMITTING SIGNAL...';
-            
-            logToTerminal(`Handshaking established with client packet: ${email}`, 'system');
-
-            // Send actual email using FormSubmit AJAX
-            fetch("https://formsubmit.co/ajax/smanoj11@gmail.com", {
-                method: "POST",
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    pillar: subject,
-                    message: message,
-                    _subject: `New Portfolio Signal from ${name}: [${subject.toUpperCase()}]`
-                })
-            })
-            .then(response => {
-                if (response.ok) {
-                    showToast('Signal successfully routed to Manoj\'s inbox!', 'success');
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
-            })
-            .catch(error => {
-                console.error('Error submitting form:', error);
-                // Fallback success output to guarantee a smooth user experience even if blocked by offline state or strict adblockers
-                showToast('Signal successfully routed! (Cache-Sync)', 'success');
-            })
-            .finally(() => {
-                // Reset Form
-                contactForm.reset();
-                if (submitBtn) submitBtn.disabled = false;
-                if (submitBtnText) submitBtnText.innerText = 'Transmit Signal';
-            });
         });
     }
 
@@ -505,5 +453,182 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         // Fallback for browsers without IntersectionObserver
         revealElements.forEach(el => el.classList.add('active'));
+    }
+
+    /* ==========================================================================
+       GENERATIVE ART ENGINE
+       ========================================================================== */
+    const artCanvas = document.getElementById('generative-canvas');
+    if (artCanvas) {
+        const ctx = artCanvas.getContext('2d');
+        const seedVal = document.getElementById('art-seed-val');
+        const vectorVal = document.getElementById('art-vector-val');
+        const regenBtn = document.getElementById('regenerate-art-btn');
+        
+        let width = 0;
+        let height = 0;
+        let particles = [];
+        let numParticles = 150;
+        let seed = Math.random() * 1000;
+        let activePaletteIndex = 0;
+
+        const PALETTES = [
+            { name: 'Neon Horizon', colors: ['#ff007f', '#7f00ff', '#00f0ff', '#ff00aa'], seedHex: '#FF007F' },
+            { name: 'Ethereum Cyber', colors: ['#5b6cfd', '#a384ff', '#1ad1a5', '#49e6f3'], seedHex: '#5B6CFD' },
+            { name: 'Solar Nebula', colors: ['#ff4b2b', '#ff416c', '#ff8c00', '#f4e613'], seedHex: '#FF4B2B' },
+            { name: 'Forest Aurora', colors: ['#00e676', '#00b0ff', '#1de9b6', '#a7ffeb'], seedHex: '#00E676' },
+            { name: 'Pure Platinum', colors: ['#ffffff', '#e0e0e0', '#80deea', '#00acc1'], seedHex: '#FFFFFF' }
+        ];
+
+        const mouse = { x: -1000, y: -1000 };
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = 0;
+                this.vy = 0;
+                this.speed = 0.3 + Math.random() * 1.2;
+                const palette = PALETTES[activePaletteIndex].colors;
+                this.color = palette[Math.floor(Math.random() * palette.length)];
+                this.alpha = 0.15 + Math.random() * 0.45;
+                this.size = 1 + Math.random() * 1.5;
+                this.life = 0;
+                this.maxLife = 100 + Math.random() * 300;
+            }
+            update() {
+                // Sine field vector calculations
+                const angle = Math.sin(this.x * 0.008 + seed) * Math.cos(this.y * 0.008 + seed) * Math.PI * 2;
+                
+                let ax = Math.cos(angle) * 0.08;
+                let ay = Math.sin(angle) * 0.08;
+                
+                // Mouse attraction
+                if (mouse.x > 0 && mouse.y > 0) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        const force = (120 - dist) / 600;
+                        ax += (dx / dist) * force;
+                        ay += (dy / dist) * force;
+                    }
+                }
+                
+                this.vx += ax;
+                this.vy += ay;
+                
+                const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+                if (currentSpeed > this.speed) {
+                    this.vx = (this.vx / currentSpeed) * this.speed;
+                    this.vy = (this.vy / currentSpeed) * this.speed;
+                }
+                
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                this.life++;
+                
+                if (this.x < 0 || this.x > width || this.y < 0 || this.y > height || this.life > this.maxLife) {
+                    this.reset();
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.alpha;
+                ctx.fill();
+            }
+        }
+
+        function resize() {
+            const rect = artCanvas.getBoundingClientRect();
+            width = rect.width || 400;
+            height = rect.height || 400;
+            
+            artCanvas.width = width * window.devicePixelRatio;
+            artCanvas.height = height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            
+            numParticles = Math.min(220, Math.floor(width * 0.5));
+            if (vectorVal) vectorVal.textContent = numParticles;
+            
+            // Reinitialize particles to fit the new size
+            initParticles();
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+            
+            // Clear trail buffer
+            ctx.fillStyle = 'rgb(10, 10, 15)';
+            ctx.fillRect(0, 0, width, height);
+        }
+
+        function setPalette(index) {
+            activePaletteIndex = index;
+            if (seedVal) seedVal.textContent = PALETTES[index].name;
+        }
+
+        // Event listeners
+        window.addEventListener('resize', resize);
+        
+        artCanvas.addEventListener('mousemove', (e) => {
+            const rect = artCanvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        artCanvas.addEventListener('mouseleave', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        if (regenBtn) {
+            regenBtn.addEventListener('click', () => {
+                seed = Math.random() * 1000;
+                const nextPalette = (activePaletteIndex + 1) % PALETTES.length;
+                setPalette(nextPalette);
+                initParticles();
+                
+                showToast(`Generative Mode: ${PALETTES[nextPalette].name}`, 'terminal');
+                
+                const icon = regenBtn.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'rotate(360deg)';
+                    icon.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    setTimeout(() => {
+                        icon.style.transform = 'none';
+                        icon.style.transition = 'none';
+                    }, 600);
+                }
+            });
+        }
+
+        // Initialize
+        setPalette(0);
+        resize();
+
+        // Loop
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 10, 15, 0.06)';
+            ctx.fillRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
     }
 });
