@@ -3,152 +3,402 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manoj | AI Architect & Builder Portfolio</title>
-    <meta name="description" content="AI Architect, Systems Thinker, and End-to-End Director. Premium portfolio showcasing UI/UX, AI automation pipelines, creative video execution, and vibe coding.">
+    <title>Manoj Sridhar | AI Creative Technologist & Immersive Artist</title>
+    <meta name="description" content="Official portfolio of Manoj Sridhar, blending Generative AI, sacred geometry mandalas, traditional fluid art, and ambient psychedelic SonicScapes sound design.">
+    <meta name="keywords" content="Manoj Sridhar, AI Creative Technologist, Generative AI Designer, SonicScapes, Abstract Art, ComfyUI, Stable Diffusion, Harman, Maserati UX, Volvo, Digital Mandala">
     
-    <!-- Google Fonts -->
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Manoj Sridhar | AI Creative Technologist & Immersive Artist">
+    <meta property="og:description" content="Discover the synthesis of advanced AI pipelines, traditional abstract paintings, and ambient audio soundscapes.">
+    <meta property="og:url" content="https://manoj-vibecoding-portfolio.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Lucide Icons (Sleek Modern icons) -->
+    <!-- Icons (Lucide Icons from CDN) -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- CSS Stylesheet -->
+
+    <!-- Project Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="dark-mode">
+    
+    <!-- Full-Screen Interactive Fluid Art Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
 
-    <!-- Ambient Glowing Orbs Background -->
-    <div class="ambient-glow">
-        <div class="clay-shape clay-sphere-pink"></div>
-        <div class="clay-shape clay-capsule-purple"></div>
-        <div class="clay-shape clay-torus-teal"></div>
-    </div>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-glow"></div>
 
-    <!-- Sticky Navigation Bar -->
-    <header class="navbar">
+    <!-- Floating Navigation Bar -->
+    <header class="glass-nav">
         <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <span class="gradient-text">Manoj</span><span class="sub-logo">.dev</span>
+            <a href="#" class="logo">
+                <span class="logo-accent">M</span><span>S</span>
             </a>
+            
             <nav class="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#pillars" class="nav-link">Pillars</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#about" class="nav-item active">About</a>
+                <a href="#facets" class="nav-item">Core Facets</a>
+                <a href="#workflow" class="nav-item">AI Workflow</a>
+                <a href="#portfolio" class="nav-item">Gallery</a>
+                <a href="#experience" class="nav-item">Timeline</a>
+                <a href="#stores" class="nav-item">Outlets</a>
+                <a href="#contact" class="nav-item">Connect</a>
             </nav>
-            <div class="nav-actions">
-                <a href="Manoj_Resume.pdf" target="_blank" class="btn btn-secondary btn-sm" id="btn-resume">
-                    <i data-lucide="file-text"></i> Resume
-                </a>
-                <a href="Manoj_%20Portfolio.pdf" target="_blank" class="btn btn-secondary btn-sm" id="btn-portfolio">
-                    <i data-lucide="book-open"></i> Portfolio PDF
-                </a>
-                <a href="#contact" class="btn btn-primary btn-sm">Let's Build</a>
+
+            <div class="audio-control-container">
+                <button id="audio-toggle" class="glass-button" aria-label="Toggle ambient soundscapes">
+                    <i data-lucide="volume-x" class="mute-icon"></i>
+                    <i data-lucide="volume-2" class="play-icon hidden"></i>
+                    <span class="audio-status-text">SonicScapes Off</span>
+                </button>
+                <div class="visualizer-bar-container">
+                    <span class="viz-bar"></span>
+                    <span class="viz-bar"></span>
+                    <span class="viz-bar"></span>
+                    <span class="viz-bar"></span>
+                </div>
             </div>
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <button class="mobile-menu-btn" aria-label="Open Navigation Menu">
+                <i data-lucide="menu"></i>
             </button>
         </div>
     </header>
 
-    <!-- Mobile Nav Overlay -->
-    <div class="mobile-nav">
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#pillars" class="mobile-link">Pillars</a>
-        <a href="#contact" class="mobile-link">Contact</a>
-        <a href="Manoj_Resume.pdf" target="_blank" class="btn btn-primary" id="mobile-btn-resume">Resume</a>
-        <a href="Manoj_%20Portfolio.pdf" target="_blank" class="btn btn-secondary" id="mobile-btn-portfolio" style="margin-top: 10px; border: 1px solid var(--border-color);">Portfolio PDF</a>
-    </div>
-
+    <!-- Main Container -->
     <main>
+        
         <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div class="hero-content container">
-                <div class="badge fade-in">
-                    <span class="pulse"></span> Active in 2026 Tech Stack
-                </div>
-                <h1 class="hero-title fade-in delay-1">
-                    I don't just design.<br>
-                    <span class="gradient-text shimmer">I build pipelines.</span>
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="glowing-orb purple-orb"></div>
+                <div class="glowing-orb cyan-orb"></div>
+                
+                <h1 class="hero-title">
+                    <span class="gradient-text text-1">MANOJ</span><br>
+                    <span class="gradient-text text-2">SRIDHAR</span>
                 </h1>
-                <p class="hero-subtitle fade-in delay-2">
-                    Systems thinker. AI architect. End-to-end creative director. Shipping production-ready applications, automated marketing workflows, and Calm UI dashboard systems.
+                
+                <p class="hero-subtitle">
+                    AI Creative Technologist <span class="divider">/</span> Generative Designer <span class="divider">/</span> Ambient Sound Producer
                 </p>
-                <div class="hero-actions fade-in delay-3">
-                    <a href="#pillars" class="btn btn-primary btn-lg">Explore Pillars</a>
-                    <a href="#contact" class="btn btn-secondary btn-lg">Contact Manoj</a>
+                
+                <p class="hero-description">
+                    Blending engineering systems, prompt architecture, and deep sensory flow to create the next generation of visual and auditory storytelling.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#portfolio" class="action-btn primary-btn">
+                        <span>Explore Gallery</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                    <button id="hero-audio-trigger" class="action-btn secondary-btn">
+                        <i data-lucide="play-circle"></i>
+                        <span>Listen to SonicScapes</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Floating statistics -->
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <span class="badge-num">7+</span>
+                    <span class="badge-txt">Years Synthesizing Design</span>
+                </div>
+                <div class="hero-badge">
+                    <span class="badge-num">50+</span>
+                    <span class="badge-txt">AI Models Trained</span>
+                </div>
+                <div class="hero-badge">
+                    <span class="badge-num">100%</span>
+                    <span class="badge-txt">Vibe Coding Powered</span>
                 </div>
             </div>
             
             <div class="scroll-indicator">
-                <span class="scroll-mouse">
-                    <span class="scroll-wheel"></span>
-                </span>
-                <span class="scroll-text">Scroll to explore</span>
+                <span>Scroll to enter flow</span>
+                <div class="indicator-mouse">
+                    <div class="indicator-wheel"></div>
+                </div>
             </div>
         </section>
 
-
-
-        <!-- About / Core Philosophy Section -->
-        <section class="about container" id="about">
-            <div class="section-header reveal">
-                <span class="section-tag">Core Philosophy</span>
-                <h2>The Rise of the "Builder"</h2>
-                <div class="section-divider"></div>
+        <!-- About / Strengths Section -->
+        <section id="about" class="about-section container">
+            <div class="section-header">
+                <span class="section-label">01 // THE SYNTHESIS</span>
+                <h2 class="section-title">The Creative Technologist</h2>
+                <div class="header-line"></div>
             </div>
-            
-            <div class="about-grid reveal">
-                <div class="about-text-panel glass-card">
-                    <h3>Design is nothing without execution.</h3>
+
+            <div class="about-grid">
+                <div class="about-card intro-card glass-card">
+                    <h3>Bridging Art and Engineering</h3>
                     <p>
-                        In the age of generative models and rapid cycles, the gap between concept and production is dead. Traditional designers draw static pictures; builders engineer the actual mechanisms. 
+                        I specialize in creating custom systems that fuse deep human aesthetics with advanced generative models. My background in automotive systems engineering gives me a structured, logical methodology, while my active painting practice and sound design wing (SonicScapes) allow me to create multi-sensory visual narratives.
                     </p>
                     <p>
-                        My work bridges the exact boundary between aesthetics and code. I design systems of <strong>progressive disclosure</strong>, construct multi-model autonomous agents, compile brand-consistent lookbooks, and code browser tools with audio-visual pipelines.
+                        Through 7+ years of building, I have designed infotainment UX modules for luxury vehicles (Maserati), optimized generative workflows for tech giants (Adobe Contract), published coloring journals, and engineered high-throughput image and video automation pipelines.
                     </p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Cursor AI</span>
-                        <span class="tech-tag">ComfyUI</span>
-                        <span class="tech-tag">Midjourney</span>
-                        <span class="tech-tag">Web Audio API</span>
-                        <span class="tech-tag">Stripe</span>
-                        <span class="tech-tag">Supabase</span>
-                        <span class="tech-tag">Vercel</span>
-                        <span class="tech-tag">Tailwind</span>
-                        <span class="tech-tag">Kling</span>
-                        <span class="tech-tag">Runway Gen-3</span>
-                    </div>
                 </div>
                 
-                <div class="about-visual-panel glass-card generative-art-panel">
-                    <div class="art-card-header">
-                        <div class="art-title-area">
-                            <span class="art-tag">Dynamic Art Engine</span>
-                            <h4>Abstract Flow Synthesis</h4>
+                <div class="about-card metrics-card glass-card">
+                    <h3>Measurable Impact</h3>
+                    <div class="metrics-list">
+                        <div class="metric-item">
+                            <span class="metric-value">35-50%</span>
+                            <span class="metric-label">Quality improvement on AI image & video production workflows.</span>
                         </div>
-                        <button id="regenerate-art-btn" class="art-action-btn" title="Generate new abstract seed">
-                            <i data-lucide="refresh-cw"></i> Regenerate
-                        </button>
+                        <div class="metric-item">
+                            <span class="metric-value">40%</span>
+                            <span class="metric-label">Reduction in prompt-engineering and model iteration cycles.</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-value">25%</span>
+                            <span class="metric-label">Faster design iteration on client systems & wireframe deliverables.</span>
+                        </div>
                     </div>
-                    <div class="canvas-container">
-                        <canvas id="generative-canvas"></canvas>
-                        <!-- Sleek overlay stats for that premium UI feel -->
-                        <div class="canvas-overlay-stats">
-                            <div class="overlay-stat">
-                                <span class="lbl">Seed</span>
-                                <span class="val" id="art-seed-val">#4A90E2</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Facets Section -->
+        <section id="facets" class="facets-section container">
+            <div class="section-header">
+                <span class="section-label">02 // CORE CAPABILITIES</span>
+                <h2 class="section-title">Four Pillars of Design</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="facets-grid">
+                <div class="facet-card glass-card hover-glow" data-category="genai">
+                    <div class="facet-icon-wrapper">
+                        <i data-lucide="cpu" class="facet-icon"></i>
+                    </div>
+                    <h3>Generative AI Systems</h3>
+                    <p>Advanced pipeline scaling utilizing Stable Diffusion, ComfyUI nodes, custom LoRA model training, and custom Adobe Firefly model architectures.</p>
+                    <ul class="facet-list">
+                        <li>Node-based image generation</li>
+                        <li>Prompt logic development</li>
+                        <li>Automated visual assets</li>
+                    </ul>
+                </div>
+
+                <div class="facet-card glass-card hover-glow" data-category="music">
+                    <div class="facet-icon-wrapper">
+                        <i data-lucide="music-4" class="facet-icon"></i>
+                    </div>
+                    <h3>SonicScapes Production</h3>
+                    <p>Auditory journeys combining electronic ambient textures, binaural sound fields, and mantra-infused layers synced to psychedelic visualizer arts.</p>
+                    <ul class="facet-list">
+                        <li>Ambient sound design</li>
+                        <li>Original YouTube music pipelines</li>
+                        <li>Multi-platform releases</li>
+                    </ul>
+                </div>
+
+                <div class="facet-card glass-card hover-glow" data-category="art">
+                    <div class="facet-icon-wrapper">
+                        <i data-lucide="palette" class="facet-icon"></i>
+                    </div>
+                    <h3>Abstract & Sacred Art</h3>
+                    <p>Fluid pouring art, detailed thread painting, vector illustrations in Illustrator, and geometric Mandalas designed to bridge digital and physical worlds.</p>
+                    <ul class="facet-list">
+                        <li>Acrylic pouring canvasses</li>
+                        <li>Sacred geometry drawings</li>
+                        <li>Global print e-commerce</li>
+                    </ul>
+                </div>
+
+                <div class="facet-card glass-card hover-glow" data-category="engineering">
+                    <div class="facet-icon-wrapper">
+                        <i data-lucide="terminal" class="facet-icon"></i>
+                    </div>
+                    <h3>Creative Engineering</h3>
+                    <p>Systems-level wireframing and user stories. Experience prototyping rapid frontend interfaces using Vercel, Cursor, and AI-assisted Vibe coding.</p>
+                    <ul class="facet-list">
+                        <li>Automotive UX wireframes</li>
+                        <li>Vibe-coded React apps</li>
+                        <li>Agile requirement design</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive AI Story-to-Video Workflow Section -->
+        <section id="workflow" class="workflow-section container">
+            <div class="section-header">
+                <span class="section-label">03 // PIPELINE DESIGN</span>
+                <h2 class="section-title">Story-to-Video AI Workflow</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <p class="workflow-intro">
+                I map and engineer complex creative logic into reliable, linear workflows that combine storytelling with automated media generation. Click the steps to navigate the pipeline.
+            </p>
+
+            <div class="workflow-interactive-container glass-card">
+                <!-- Nav steps track -->
+                <div class="workflow-steps-track">
+                    <button class="workflow-step-btn active" data-step="1">
+                        <span class="step-num">01</span>
+                        <span class="step-lbl">Concept</span>
+                    </button>
+                    <button class="workflow-step-btn" data-step="2">
+                        <span class="step-num">02</span>
+                        <span class="step-lbl">Segmentation</span>
+                    </button>
+                    <button class="workflow-step-btn" data-step="3">
+                        <span class="step-num">03</span>
+                        <span class="step-lbl">Image Prompt</span>
+                    </button>
+                    <button class="workflow-step-btn" data-step="4">
+                        <span class="step-num">04</span>
+                        <span class="step-lbl">Video Prompt</span>
+                    </button>
+                    <button class="workflow-step-btn" data-step="5">
+                        <span class="step-num">05</span>
+                        <span class="step-lbl">Asset Gen</span>
+                    </button>
+                    <button class="workflow-step-btn" data-step="6">
+                        <span class="step-num">06</span>
+                        <span class="step-lbl">Sound Sync</span>
+                    </button>
+                    <button class="workflow-step-btn" data-step="7">
+                        <span class="step-num">07</span>
+                        <span class="step-lbl">Final Export</span>
+                    </button>
+                </div>
+
+                <!-- Display panel -->
+                <div class="workflow-display-panel">
+                    <div class="workflow-pane active" id="pane-1">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 1 // Initial Story</span>
+                            <h3>Input Story & Concept Genesis</h3>
+                            <p>Every immersive video begins as a central philosophical, spiritual, or psychedelic narrative. Themes are laid out focusing on mantra layers, sacred geometry concepts, or surreal world-building constructs.</p>
+                            <div class="pane-details">
+                                <span class="tag">Narrative Scaffolding</span>
+                                <span class="tag">Mind Mapping</span>
                             </div>
-                            <div class="overlay-stat">
-                                <span class="lbl">Complexity</span>
-                                <span class="val" id="art-vector-val">420</span>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="sparkles" class="pulsing-icon"></i>
+                                <span>Concept Core</span>
                             </div>
-                            <div class="overlay-stat">
-                                <span class="lbl">Mode</span>
-                                <span class="val">Flow Field</span>
+                        </div>
+                    </div>
+
+                    <div class="workflow-pane" id="pane-2">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 2 // Deconstruction</span>
+                            <h3>Story Breakdown & Scene Segmentation</h3>
+                            <p>Structuring the story into separate scene logs. We define clear timing parameters, camera movements, moodboards, and specific focal transitions to ensure the visual elements flow like traditional canvas brushstrokes.</p>
+                            <div class="pane-details">
+                                <span class="tag">Timing Charts</span>
+                                <span class="tag">Mood Mapping</span>
+                            </div>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="git-commit"></i>
+                                <span>Scene Splits</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-pane" id="pane-3">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 3 // Image Prompting</span>
+                            <h3>Text-Image Prompt Architecture</h3>
+                            <p>Designing advanced, syntax-focused prompting strings. Blending precise physical descriptions (lighting, camera depth, environment) with artistic styling tokens to instruct ComfyUI and Stable Diffusion engines accurately.</p>
+                            <div class="pane-details">
+                                <span class="tag">ComfyUI Setup</span>
+                                <span class="tag">SDXL / Flux Prompts</span>
+                            </div>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="code-2"></i>
+                                <span>Prompt Build</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-pane" id="pane-4">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 4 // Motion Directing</span>
+                            <h3>Image-to-Video Visual Prompting</h3>
+                            <p>Injecting motion vectors. Directing temporal consistencies and camera pans utilizing state-of-the-art tools like Adobe Firefly Video, Google Veo3, or RunwayML, transforming static generative art into fluid organic cinema.</p>
+                            <div class="pane-details">
+                                <span class="tag">Firefly Video</span>
+                                <span class="tag">RunwayML</span>
+                            </div>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="video"></i>
+                                <span>Motion Vectors</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-pane" id="pane-5">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 5 // Processing</span>
+                            <h3>High-Quality Media Asset Generation</h3>
+                            <p>Batch rendering processes. Generating multiple visual assets concurrently with consistent character designs, color gradings, and high resolution scaling configurations through dedicated model outputs.</p>
+                            <div class="pane-details">
+                                <span class="tag">High-Res Rendering</span>
+                                <span class="tag">Batch Processing</span>
+                            </div>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="loader-2" class="spin-icon"></i>
+                                <span>Batch Output</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-pane" id="pane-6">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 6 // Sonic Integration</span>
+                            <h3>Audio & Voiceover Generation</h3>
+                            <p>This is where SonicScapes comes to life. Original synthesizers, rhythmic sound effects, and healing frequency tracks are composed and matched to the scene cues to produce complete auditory-visual synthesis.</p>
+                            <div class="pane-details">
+                                <span class="tag">SonicScapes Composition</span>
+                                <span class="tag">Frequency Tuning</span>
+                            </div>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="waveform" class="pulse-icon"></i>
+                                <span>Binaural Audio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workflow-pane" id="pane-7">
+                        <div class="pane-content">
+                            <span class="pane-badge">Step 7 // Mastering</span>
+                            <h3>Assembly, Master Editing & Final Export</h3>
+                            <p>Combining video grids, soundscapes, and text layers in Premiere Pro. Refining transitions, adjusting color tones, and mastering audio for optimal streaming output on YouTube and Vercel.</p>
+                            <div class="pane-details">
+                                <span class="tag">Adobe Premiere Pro</span>
+                                <span class="tag">Master Delivery</span>
+                            </div>
+                        </div>
+                        <div class="pane-visual">
+                            <div class="visual-node">
+                                <i data-lucide="check-circle" class="success-icon"></i>
+                                <span>Render Finished</span>
                             </div>
                         </div>
                     </div>
@@ -156,300 +406,272 @@
             </div>
         </section>
 
-        <!-- Pillars Section -->
-        <section class="pillars container" id="pillars">
-            <div class="section-header reveal">
-                <span class="section-tag">My Architecture</span>
-                <h2>The Four Pillars of Construction</h2>
-                <div class="section-divider"></div>
+        <!-- Dynamic Filterable Portfolio Section -->
+        <section id="portfolio" class="portfolio-section container">
+            <div class="section-header">
+                <span class="section-label">04 // PORTFOLIO GRID</span>
+                <h2 class="section-title">Interactive Art & Design Gallery</h2>
+                <div class="header-line"></div>
             </div>
 
-            <!-- Pillar Navigation Tabs -->
-            <div class="pillar-tabs reveal">
-                <button class="pillar-tab active" data-pillar="p1">
-                    <i data-lucide="layers"></i>
-                    <span>UI/UX & Systems</span>
-                </button>
-                <button class="pillar-tab" data-pillar="p2">
-                    <i data-lucide="cpu"></i>
-                    <span>AI Automation</span>
-                </button>
-                <button class="pillar-tab" data-pillar="p3">
-                    <i data-lucide="clapperboard"></i>
-                    <span>AI Video & Creative</span>
-                </button>
-                <button class="pillar-tab" data-pillar="p4">
-                    <i data-lucide="code-2"></i>
-                    <span>Vibe Coding & SaaS</span>
-                </button>
+            <!-- Filter Categories Navigation -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Creations</button>
+                <button class="filter-btn" data-filter="genai">Generative AI</button>
+                <button class="filter-btn" data-filter="sacred">Digital & Mandalas</button>
+                <button class="filter-btn" data-filter="paintings">Traditional Paintings</button>
             </div>
 
-            <!-- Pillars Display -->
-            <div class="pillar-contents">
-
-                <!-- Pillar 1: UI/UX -->
-                <div class="pillar-view active" id="p1">
-                    <div class="pillar-intro reveal">
-                        <div class="pillar-intro-text">
-                            <h3>🧠 UI/UX & Product Design — "The Systems Thinker"</h3>
-                            <p>Translating extreme data density into clean, calm, and responsive interfaces. I
-                                design using progressive disclosure, maintaining deep technical structures
-                                underneath polished, user-centered presentation layers.</p>
-                        </div>
-                    </div>
-
-                    <div class="showcase-grid">
-                        <div class="showcase-panel reveal">
-                            <div class="showcase-image-container">
-                                <img src="assets/metamask_flow.png"
-                                    alt="MetaMask Web3 Wallet Flow" loading="lazy">
-                                <div class="showcase-hud">
-                                    <div class="hud-corner hud-tl"></div>
-                                    <div class="hud-corner hud-tr"></div>
-                                    <div class="hud-corner hud-bl"></div>
-                                    <div class="hud-corner hud-br"></div>
-                                    <div class="hud-scanline"></div>
-                                </div>
-                                <div class="showcase-tag-float">Web3 / Crypto</div>
-                            </div>
-                            <div class="showcase-info">
-                                <span class="showcase-index">01</span>
-                                <h4>MetaMask Wallet Flow</h4>
-                                <p class="showcase-subtitle">Seamless Web3 onboarding and transaction UI</p>
-                                <p class="showcase-desc">A high-fidelity redesign of the MetaMask wallet experience, featuring a sleek glassmorphic UI, real-time gas fee estimation, and an intuitive token swap interface built for the modern decentralized web.</p>
-                                <div class="showcase-metrics-row">
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">100+</span>
-                                        <span class="metric-lbl">Tokens Supported</span>
-                                    </div>
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">Real-time</span>
-                                        <span class="metric-lbl">Gas Estimation</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block btn-open-modal"
-                                    data-modal="m1c">View Full Case Study</button>
-                            </div>
-                        </div>
-
-                        <div class="showcase-panel showcase-reverse reveal">
-                            <div class="showcase-image-container">
-                                <img src="assets/pillar1_health_wizard.webp"
-                                    alt="HealthTech Intake Onboarding" loading="lazy">
-                                <div class="showcase-hud">
-                                    <div class="hud-corner hud-tl"></div>
-                                    <div class="hud-corner hud-tr"></div>
-                                    <div class="hud-corner hud-bl"></div>
-                                    <div class="hud-corner hud-br"></div>
-                                    <div class="hud-scanline"></div>
-                                </div>
-                                <div class="showcase-tag-float">Healthcare</div>
-                            </div>
-                            <div class="showcase-info">
-                                <span class="showcase-index">02</span>
-                                <h4>HealthTech Intake Onboarding</h4>
-                                <p class="showcase-subtitle">Progressive intake wizard for medical patients</p>
-                                <p class="showcase-desc">A highly accessible, conversational multi-step wizard designed for HIPAA-compliant clinical data collection, incorporating dynamic validation, progress tracking, and adaptive follow-up logic.</p>
-                                <div class="showcase-metrics-row">
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">93.4%</span>
-                                        <span class="metric-lbl">Form Completion Rate</span>
-                                    </div>
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">HIPAA</span>
-                                        <span class="metric-lbl">Compliant Design</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block btn-open-modal"
-                                    data-modal="m1b">View Full Case Study</button>
+            <!-- Gallery Masonry Grid -->
+            <div class="portfolio-grid">
+                
+                <!-- Card 1: Generative AI -->
+                <div class="portfolio-card glass-card" data-category="genai" 
+                     data-title="Surreal Floating Islands" 
+                     data-desc="A high-fidelity conceptual image depicting floating islands with cascading waterfalls and flying whales, illustrating advanced Stable Diffusion prompt logic."
+                     data-tool="Stable Diffusion, Flux, ComfyUI" 
+                     data-prompt="'A surreal landscape of floating islands connected by glowing vines; soft pastel clouds, flying whales, and waterfalls in the sky; peaceful dreamlike mood; high-resolution fantasy illustration.'"
+                     data-link="https://www.youtube.com/@mysticdiffusion"
+                     data-img="assets/images/generative_landscape_preview.png">
+                    <div class="card-image-wrapper">
+                        <img src="assets/images/generative_landscape_preview.png" alt="Surreal Floating Islands generative AI art" class="card-img">
+                        <div class="card-overlay">
+                            <i data-lucide="expand" class="zoom-icon"></i>
+                            <div class="overlay-details">
+                                <span class="overlay-cat">Generative AI</span>
+                                <h4>Surreal Floating Islands</h4>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pillar 2: AI Automation -->
-                <div class="pillar-view" id="p2">
-                    <div class="pillar-intro reveal">
-                        <div class="pillar-intro-text">
-                            <h3>⚙️ AI Automation Pipelines — "The Architect"</h3>
-                            <p>Building zero-touch AI production systems, from prompt
-                                engineering to batch orchestration, background removal pipelines, and content
-                                generation engines that scale without human bottlenecks.</p>
-                        </div>
-                    </div>
-
-                    <div class="showcase-grid">
-                        <div class="showcase-panel reveal">
-                            <div class="showcase-image-container">
-                                <img src="assets/pillar2_product_pipeline.png"
-                                    alt="E-Commerce AI Product Pipeline" loading="lazy">
-                                <div class="showcase-hud">
-                                    <div class="hud-corner hud-tl"></div>
-                                    <div class="hud-corner hud-tr"></div>
-                                    <div class="hud-corner hud-bl"></div>
-                                    <div class="hud-corner hud-br"></div>
-                                    <div class="hud-scanline"></div>
-                                </div>
-                                <div class="showcase-tag-float">AI Pipeline</div>
-                            </div>
-                            <div class="showcase-info">
-                                <span class="showcase-index">01</span>
-                                <h4>E-Commerce AI Product Pipeline</h4>
-                                <p class="showcase-subtitle">Zero-touch product photography at scale</p>
-                                <p class="showcase-desc">End-to-end automation system processing raw product photos
-                                    through AI-powered background removal, shadow generation, color correction, and
-                                    multi-platform export — eliminating manual editing entirely.</p>
-                                <div class="showcase-metrics-row">
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">90%</span>
-                                        <span class="metric-lbl">Time Saved vs Manual</span>
-                                    </div>
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">500+</span>
-                                        <span class="metric-lbl">Images/Day Capacity</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block btn-open-modal"
-                                    data-modal="m2a">View Full Case Study</button>
-                            </div>
-                        </div>
-
-                        <div class="showcase-panel showcase-reverse reveal">
-                            <div class="showcase-image-container">
-                                <img src="assets/pillar2_content_agent.webp"
-                                    alt="Multi-Model AI Content Agent" loading="lazy">
-                                <div class="showcase-hud">
-                                    <div class="hud-corner hud-tl"></div>
-                                    <div class="hud-corner hud-tr"></div>
-                                    <div class="hud-corner hud-bl"></div>
-                                    <div class="hud-corner hud-br"></div>
-                                    <div class="hud-scanline"></div>
-                                </div>
-                                <div class="showcase-tag-float">Content Engine</div>
-                            </div>
-                            <div class="showcase-info">
-                                <span class="showcase-index">02</span>
-                                <h4>Multi-Model AI Content Agent</h4>
-                                <p class="showcase-subtitle">LLM-driven orchestrator with automated self-correction</p>
-                                <p class="showcase-desc">An autonomous content generation engine routing tasks across GPT-4, Claude, and Gemini based on content type, featuring CLIP validation scores and programmatic quality gates.</p>
-                                <div class="showcase-metrics-row">
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">94%</span>
-                                        <span class="metric-lbl">First-Pass Quality Score</span>
-                                    </div>
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">12s</span>
-                                        <span class="metric-lbl">Average Rendering Time</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block btn-open-modal"
-                                    data-modal="m2b">View Full Case Study</button>
+                <!-- Card 2: Digital Mandala -->
+                <div class="portfolio-card glass-card" data-category="sacred" 
+                     data-title="Cosmic Geometry Mandala" 
+                     data-desc="Intricate hand-sketched and vector finished digital Mandala, representing sacred geometric patterns created using Procreate and Adobe Illustrator 3D."
+                     data-tool="Procreate, Adobe Illustrator 3D" 
+                     data-prompt="Hand-drawn structural vector paths combined with cosmic symmetry gradient fills."
+                     data-link="https://amzn.to/4a92IfG"
+                     data-img="assets/images/mandala_preview.png">
+                    <div class="card-image-wrapper">
+                        <img src="assets/images/mandala_preview.png" alt="Cosmic geometry digital mandala" class="card-img">
+                        <div class="card-overlay">
+                            <i data-lucide="expand" class="zoom-icon"></i>
+                            <div class="overlay-details">
+                                <span class="overlay-cat">Digital & Mandalas</span>
+                                <h4>Cosmic Geometry Mandala</h4>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pillar 3: AI Video -->
-                <div class="pillar-view" id="p3">
-                    <div class="pillar-intro reveal">
-                        <div class="pillar-intro-text">
-                            <h3>🎬 AI Video & Creative Direction — "The Director"</h3>
-                            <p>Full creative direction using AI video tools — Midjourney, Kling, Runway,
-                                Sora — combined with timestamp scripting, beat-syncing, and cinematic
-                                camera control for production-grade output.</p>
-                        </div>
-                    </div>
-
-                    <div class="showcase-grid">
-                        <div class="showcase-panel reveal">
-                            <div class="showcase-image-container">
-                                <img src="assets/pillar3_fashion_film.png"
-                                    alt="AI Cyberpunk Fashion Film" loading="lazy">
-                                <div class="showcase-hud">
-                                    <div class="hud-corner hud-tl"></div>
-                                    <div class="hud-corner hud-tr"></div>
-                                    <div class="hud-corner hud-bl"></div>
-                                    <div class="hud-corner hud-br"></div>
-                                    <div class="hud-scanline"></div>
-                                </div>
-                                <div class="showcase-tag-float">Creative Video</div>
-                            </div>
-                            <div class="showcase-info">
-                                <span class="showcase-index">01</span>
-                                <h4>AI Cyberpunk Fashion Film</h4>
-                                <p class="showcase-subtitle">"Neon Runway" — digital couture showcase</p>
-                                <p class="showcase-desc">A high-fashion runway visual campaign generated using Kling and Runway Gen-3, featuring hyper-detailed synthetic models wearing glowing smart-fabrics.</p>
-                                <div class="showcase-metrics-row">
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">1.2M+</span>
-                                        <span class="metric-lbl">Organic Views</span>
-                                    </div>
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">18</span>
-                                        <span class="metric-lbl">Generated Looks</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block btn-open-modal"
-                                    data-modal="m3a">View Full Case Study</button>
-                            </div>
-                        </div>
-
-                        <div class="showcase-panel showcase-reverse reveal">
-                            <div class="showcase-image-container">
-                                <img src="assets/pillar3_scifi_trailer.png"
-                                    alt="AI Sci-Fi Cinematic Trailer" loading="lazy">
-                                <div class="showcase-hud">
-                                    <div class="hud-corner hud-tl"></div>
-                                    <div class="hud-corner hud-tr"></div>
-                                    <div class="hud-corner hud-bl"></div>
-                                    <div class="hud-corner hud-br"></div>
-                                    <div class="hud-scanline"></div>
-                                </div>
-                                <div class="showcase-tag-float">Sci-Fi Concept</div>
-                            </div>
-                            <div class="showcase-info">
-                                <span class="showcase-index">02</span>
-                                <h4>AI Sci-Fi Cinematic Trailer</h4>
-                                <p class="showcase-subtitle">"Kepler-186f" — cinematic concept teaser</p>
-                                <p class="showcase-desc">A cinematic concept teaser utilizing Midjourney and Runway Gen-3 to render photorealistic alien landscapes, massive space structures, and cosmic storms.</p>
-                                <div class="showcase-metrics-row">
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">98%</span>
-                                        <span class="metric-lbl">Consistent Geometry</span>
-                                    </div>
-                                    <div class="showcase-metric-block">
-                                        <span class="metric-val">45</span>
-                                        <span class="metric-lbl">Storyboard Scenes</span>
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block btn-open-modal"
-                                    data-modal="m3b">View Full Case Study</button>
+                <!-- Card 3: Traditional Painting -->
+                <div class="portfolio-card glass-card" data-category="paintings" 
+                     data-title="Vivid Acrylic Flow" 
+                     data-desc="An organic abstract canvas exploring acrylic paint pouring techniques, using highly active colors and fluid flow to achieve high visual depth."
+                     data-tool="Acrylic pouring, Thread art techniques" 
+                     data-prompt="Physical medium on canvas, digitized for custom apparel prints."
+                     data-link="https://fizdi.com/manoj-s/"
+                     data-img="assets/images/pouring_art_preview.png">
+                    <div class="card-image-wrapper">
+                        <img src="assets/images/pouring_art_preview.png" alt="Acrylic pouring abstract painting" class="card-img">
+                        <div class="card-overlay">
+                            <i data-lucide="expand" class="zoom-icon"></i>
+                            <div class="overlay-details">
+                                <span class="overlay-cat">Traditional Paintings</span>
+                                <h4>Vivid Acrylic Flow</h4>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Pillar 4: Vibe Coding -->
-                <div class="pillar-view" id="p4">
-                    <div class="pillar-intro reveal">
-                        <div class="pillar-intro-text">
-                            <h3>💻 Vibe Coding & SaaS — "The Builder"</h3>
-                            <p>Shipping full-stack applications from concept to deployment, combining
-                                modern frameworks with AI-assisted development workflows for rapid
-                                product launches.</p>
-                        </div>
-                    </div>
+            </div>
+        </section>
 
-                    <div class="vibe-coding-promo reveal glass-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 60px 40px; margin-top: 40px;">
-                        <div class="glass-icon-wrapper" style="width: 80px; height: 80px; background: var(--glass-surface-2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); margin-bottom: 10px;">
-                            <i data-lucide="code-2" style="width: 40px; height: 40px; color: var(--accent-primary);"></i>
-                        </div>
-                        <h4 style="font-size: 2.2rem; margin: 0;">Interactive Vibe Coding Portfolio</h4>
-                        <p style="font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0; line-height: 1.6;">
-                            Explore a live, high-fidelity gallery of experimental applications engineered entirely using AI-assisted workflow loops. Shipped continuously to production, featuring real-time Web Audio API integrations, interactive sound synthesizers, and serverless vector workspaces.
+        <!-- Professional Experience Timeline Section -->
+        <section id="experience" class="experience-section container">
+            <div class="section-header">
+                <span class="section-label">05 // CAREER TIMELINE</span>
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <!-- Job 1 -->
+                <div class="timeline-item glass-card hover-glow">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Sep 2024 - Nov 2025</div>
+                    <div class="timeline-content">
+                        <span class="company-tag">Adobe Contract</span>
+                        <h3>Creative Consultant — AI / Generative Systems</h3>
+                        <h4 class="company-name">PANFISH</h4>
+                        <p class="timeline-desc">
+                            Supercharged AI image and video pipelines achieving a 35-50% improvement in visual output quality. Formulated prompt engineering frameworks that reduced design iterations by 40%. Delivered feedback to Adobe developers for improving Firefly model integration.
                         </p>
-                        <a href="https://manoj-vibecoding-portfolio.vercel.app/" target="_blank" class="btn btn-primary btn-lg" id="btn-launch-vibecoding" style="display: inline-flex; align-items: center; gap: 10px; margin-top: 15px;">
-                            <i data-lucide="external-link"></i> Launch Vibe Coded Portfolio
+                        <div class="timeline-tags">
+                            <span>ComfyUI</span>
+                            <span>Stable Diffusion</span>
+                            <span>Firefly Models</span>
+                            <span>Pipeline Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="timeline-item glass-card hover-glow">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Aug 2023 - Oct 2023</div>
+                    <div class="timeline-content">
+                        <span class="company-tag">FinTech Contract</span>
+                        <h3>Senior Graphic Designer</h3>
+                        <h4 class="company-name">CIFDAQ</h4>
+                        <p class="timeline-desc">
+                            Designed 50+ optimized visual assets for extensive marketing campaigns in Dubai. Increased social engagement by 20-30% via visually aligned creatives, and established robust UI/UX wireframe assets reducing iterations.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>UI/UX Wireframes</span>
+                            <span>Marketing Creatives</span>
+                            <span>Brand Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="timeline-item glass-card hover-glow">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Jan 2021 - Jun 2023</div>
+                    <div class="timeline-content">
+                        <span class="company-tag">Full-Time</span>
+                        <h3>Senior Graphic Designer</h3>
+                        <h4 class="company-name">SIRMA INDIA</h4>
+                        <p class="timeline-desc">
+                            Steered end-to-end design implementations for 50+ client projects spanning digital interfaces, brochures, and brand identities. Mentored junior design pods, improving general throughput by 30% and streamlining design cycles.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Art Direction</span>
+                            <span>Team Mentorship</span>
+                            <span>Print & Digital Production</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="timeline-item glass-card hover-glow">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Sep 2018 - Jun 2019</div>
+                    <div class="timeline-content">
+                        <span class="company-tag">Automotive Contract</span>
+                        <h3>Requirements Designer — UX / System Design</h3>
+                        <h4 class="company-name">HARMAN International</h4>
+                        <p class="timeline-desc">
+                            Engineered requirement documentation and high-level user stories for luxury automotive client infotainment systems (Maserati & Fiat Chrysler). Streamlined documentation rework workflows by 25%.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Systems Engineering</span>
+                            <span>Automotive UX</span>
+                            <span>Requirements Documentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job 5 -->
+                <div class="timeline-item glass-card hover-glow">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-date">Apr 2017 - Apr 2018</div>
+                    <div class="timeline-content">
+                        <span class="company-tag">Industrial Contract</span>
+                        <h3>Product Design Engineer</h3>
+                        <h4 class="company-name">Volvo Buses India</h4>
+                        <p class="timeline-desc">
+                            Coordinated product validation, custom mapping and mechanical layouts for Volvo-UD BRTS bus models and tarmac low-floor coaches in Pune and Ahmedabad.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>Mechanical Layouts</span>
+                            <span>Product Engineering</span>
+                            <span>AutoCAD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-Commerce Art Stores & Music Outlets Section -->
+        <section id="stores" class="stores-section container">
+            <div class="section-header">
+                <span class="section-label">06 // STORES & PORTALS</span>
+                <h2 class="section-title">E-Commerce & Digital Portals</h2>
+                <div class="header-line"></div>
+            </div>
+
+            <p class="stores-intro">
+                Access my creations across official galleries, global merchandise stores, music platforms, and publications.
+            </p>
+
+            <div class="stores-grid">
+                
+                <!-- Music Card -->
+                <div class="store-category-card glass-card hover-glow">
+                    <div class="store-header">
+                        <i data-lucide="headphones" class="store-icon text-cyan"></i>
+                        <h3>SonicScapes Streams</h3>
+                    </div>
+                    <p>Immerse yourself in deep ambient synthesizer and soundscapes releases.</p>
+                    <div class="store-links">
+                        <a href="https://open.spotify.com/artist/3BO4SHHfhGjR98QlRtYObb?si=A0njQlFzQZ-Hq7j0UuQM3g" target="_blank" class="store-btn spotify-btn">
+                            <i data-lucide="music"></i>
+                            <span>Spotify Artist</span>
+                        </a>
+                        <a href="https://www.youtube.com/@SonicScapes1111" target="_blank" class="store-btn youtube-btn">
+                            <i data-lucide="youtube"></i>
+                            <span>YouTube Audio</span>
+                        </a>
+                        <a href="https://music.amazon.com/artists/B0CXF1795K/sonicscapes" target="_blank" class="store-btn amazon-btn">
+                            <i data-lucide="shopping-bag"></i>
+                            <span>Amazon Music</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Art Prints & Merch -->
+                <div class="store-category-card glass-card hover-glow">
+                    <div class="store-header">
+                        <i data-lucide="shopping-cart" class="store-icon text-magenta"></i>
+                        <h3>Art & Merch Store</h3>
+                    </div>
+                    <p>Purchase high-quality physical canvas prints, apparel, and lifestyle accessories.</p>
+                    <div class="store-links">
+                        <a href="https://www.redbubble.com/people/smanoj11/shop?asc=u" target="_blank" class="store-btn redbubble-btn">
+                            <i data-lucide="shirt"></i>
+                            <span>Redbubble Store</span>
+                        </a>
+                        <a href="https://www.teepublic.com/user/myabstractart" target="_blank" class="store-btn teepublic-btn">
+                            <i data-lucide="gift"></i>
+                            <span>Teepublic Shop</span>
+                        </a>
+                        <a href="https://fizdi.com/manoj-s/" target="_blank" class="store-btn fizdi-btn">
+                            <i data-lucide="image"></i>
+                            <span>Fizdi Paintings</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Publications -->
+                <div class="store-category-card glass-card hover-glow">
+                    <div class="store-header">
+                        <i data-lucide="book-open" class="store-icon text-violet"></i>
+                        <h3>Mandala Publications</h3>
+                    </div>
+                    <p>Discover my printed Mandala Coloring Books, bridging traditional arts with tactile therapy.</p>
+                    <div class="store-links">
+                        <a href="https://www.amazon.com/dp/B0B8BB1W6X?ref_=pe_3052080_397514860" target="_blank" class="store-btn book-btn">
+                            <i data-lucide="book"></i>
+                            <span>Coloring Book</span>
+                        </a>
+                        <a href="https://amzn.to/4a92IfG" target="_blank" class="store-btn store-btn">
+                            <i data-lucide="external-link"></i>
+                            <span>Amazon Shop</span>
                         </a>
                     </div>
                 </div>
@@ -457,133 +679,115 @@
             </div>
         </section>
 
-        <!-- Terminal Section Removed -->
-
         <!-- Contact Section -->
-        <section class="contact container" id="contact">
-            <div class="section-header reveal">
-                <span class="section-tag">Start a Pipeline</span>
-                <h2>Let's build together</h2>
-                <div class="section-divider"></div>
+        <section id="contact" class="contact-section container">
+            <div class="section-header">
+                <span class="section-label">07 // DIRECT CONNECT</span>
+                <h2 class="section-title">Start a Collaboration</h2>
+                <div class="header-line"></div>
             </div>
 
-            <div class="contact-grid reveal">
-                <div class="contact-info glass-card">
-                    <h3>Contact Information</h3>
-                    <p>Have an intense technical brief, an automation pipeline bottleneck, or a design system challenge? Get in touch and let's structure an architecture.</p>
+            <div class="contact-grid">
+                <div class="contact-info-card glass-card">
+                    <h3>Let's Build Something Crazy</h3>
+                    <p>Have an AI production pipeline to build, a visual campaign to direct, or interested in licensed ambient audio integrations for digital media?</p>
                     
-                    <div class="contact-methods">
-                        <div class="method-item">
+                    <div class="info-links">
+                        <div class="info-item">
                             <i data-lucide="mail"></i>
-                            <div>
-                                <span class="method-lbl">Email Address</span>
-                                <a href="mailto:smanoj11@gmail.com" class="method-val">smanoj11@gmail.com</a>
-                            </div>
+                            <a href="mailto:smanoj11@gmail.com">smanoj11@gmail.com</a>
                         </div>
-                        <div class="method-item">
+                        <div class="info-item">
+                            <i data-lucide="phone"></i>
+                            <a href="tel:+919538812779">+91 95388 12779</a>
+                        </div>
+                        <div class="info-item">
                             <i data-lucide="map-pin"></i>
-                            <div>
-                                <span class="method-lbl">Location</span>
-                                <span class="method-val">Bangalore / Remote</span>
-                            </div>
-                        </div>
-                        <div class="method-item">
-                            <i data-lucide="globe"></i>
-                            <div>
-                                <span class="method-lbl">Time Zone</span>
-                                <span class="method-val">GMT+5:30 (India Standard Time)</span>
-                            </div>
+                            <span>Bangalore, India • Remote Worldwide</span>
                         </div>
                     </div>
 
                     <div class="social-links">
-                        <a href="https://www.myabstractart.com/" target="_blank" aria-label="Website" title="Official Website">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <a href="https://www.linkedin.com/in/manoj-sridhar-ab35b135/" target="_blank" class="social-icon-btn" aria-label="LinkedIn Profile">
+                            <i data-lucide="linkedin"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/manoj-sridhar-ab35b135/" target="_blank" aria-label="LinkedIn" title="LinkedIn Profile">
-                            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <a href="https://www.behance.net/manojs3" target="_blank" class="social-icon-btn" aria-label="Behance Profile">
+                            <i data-lucide="brush"></i>
                         </a>
-                        <a href="https://manoj-vibecoding-portfolio.vercel.app/" target="_blank" aria-label="Vibe Coding Portfolio" title="Vibe Coding Live App">
-                            <svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                        <a href="https://www.youtube.com/@mysticdiffusion" target="_blank" class="social-icon-btn" aria-label="Mystic Diffusion YouTube">
+                            <i data-lucide="play"></i>
                         </a>
-                        <a href="https://www.youtube.com/@SonicScapes1111" target="_blank" aria-label="YouTube" title="YouTube Channel">
-                            <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        <a href="https://manoj-vibecoding-portfolio.vercel.app/" target="_blank" class="social-icon-btn" aria-label="Vercel App">
+                            <i data-lucide="globe"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="contact-form-panel glass-card">
-                    <form id="portfolio-contact-form" action="https://formsubmit.co/ajax/smanoj11@gmail.com" method="POST">
-                        <!-- Disable Captcha -->
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_subject" value="New Portfolio Signal">
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="form-name">Full Name</label>
-                                <input type="text" id="form-name" name="name" required placeholder="John Doe">
-                            </div>
-                            <div class="form-group">
-                                <label for="form-email">Email Address</label>
-                                <input type="email" id="form-email" name="email" required placeholder="john@example.com">
-                            </div>
+                <div class="contact-form-card glass-card">
+                    <form id="portfolio-contact-form" onsubmit="event.preventDefault(); alert('Sensory synthesis pipeline connected! Thank you, Manoj will get in touch soon.');">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required placeholder="Alexander Calder">
                         </div>
                         <div class="form-group">
-                            <label for="form-subject">Select Pillar of Interest</label>
-                            <select id="form-subject" name="pillar">
-                                <option value="uiux">UI/UX & Systems Design</option>
-                                <option value="automation">AI Workflow Automation</option>
-                                <option value="creative">AI Video & Lookbooks</option>
-                                <option value="vibecoding">Vibe Coding / Custom SaaS</option>
-                                <option value="other">Other System Request</option>
-                            </select>
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required placeholder="alex@creatorsynthesis.com">
                         </div>
                         <div class="form-group">
-                            <label for="form-message">System Brief / Message</label>
-                            <textarea id="form-message" name="message" rows="5" required placeholder="Describe your architectural requirements, project specs, or message..."></textarea>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" rows="4" required placeholder="Let's collaborate on combining abstract visuals and generative AI models..."></textarea>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-block" id="btn-submit-form">
-                            <span class="btn-text">Transmit Signal</span>
+                        <button type="submit" class="submit-btn">
+                            <span>Establish Connection</span>
                             <i data-lucide="send"></i>
                         </button>
                     </form>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container container">
-            <p class="copyright">&copy; 2026 Manoj (Smanoj11). Engineered with precision and vibe-coded with care.</p>
-            <div class="footer-meta">
-                <span>Vibe-coded via Cursor AI</span>
-                <span class="footer-dot"></span>
-                <span>Hosted on Vercel</span>
+    <!-- Interactive Lightbox Modal -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-container glass-card">
+            <div class="lightbox-media-wrapper">
+                <img id="lightbox-img" src="" alt="Expanded portfolio visual">
             </div>
-        </div>
-    </footer>
+            <div class="lightbox-info">
+                <span id="lightbox-cat" class="lightbox-cat-tag">Generative AI</span>
+                <h3 id="lightbox-title">Visual Title</h3>
+                <p id="lightbox-desc">Detailed descriptions of the visual art and creative technical pipeline applied.</p>
+                
+                <div class="lightbox-meta-box">
+                    <div class="meta-field">
+                        <strong>Tools & Tech:</strong>
+                        <span id="lightbox-tools">Stable Diffusion, Flux, ComfyUI</span>
+                    </div>
+                    <div id="prompt-box" class="meta-field">
+                        <strong>Prompt Architecture:</strong>
+                        <code id="lightbox-prompt">"A highly detailed render of..."</code>
+                    </div>
+                </div>
 
-    <!-- ==================== CASE STUDY MODALS ==================== -->
-    
-    <!-- Single High-Fidelity Dynamic Overlay Modal -->
-    <div class="modal-overlay" id="case-study-modal">
-        <div class="modal-card glass-card">
-            <button class="modal-close" id="modal-close-btn" aria-label="Close Case Study">
-                <i data-lucide="x"></i>
-            </button>
-            <div class="modal-content" id="modal-dynamic-content">
-                <!-- Injected dynamically via script.js -->
+                <a id="lightbox-action" href="" target="_blank" class="lightbox-action-btn">
+                    <span>Explore Outlet</span>
+                    <i data-lucide="external-link"></i>
+                </a>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>© 2026 Manoj Sridhar × Myabstractart × SonicScapes. Constructed via Vibe Coding.</p>
+            <p class="footer-sub">Connecting Abstract Art, Generative AI Systems, & Ambient Frequencies.</p>
+        </div>
+    </footer>
 
-    <!-- UI Notification/Alert Overlay -->
-    <div class="notification-container" id="notification-area"></div>
-
-    <!-- JS Scripts -->
+    <!-- Core Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
