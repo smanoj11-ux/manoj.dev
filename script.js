@@ -390,10 +390,48 @@ document.addEventListener('DOMContentLoaded', () => {
        CONTACT FORM ROUTING VIA FORMSUBMIT AJAX
        ========================================================================== */
     if (contactForm) {
-        contactForm.addEventListener('submit', () => {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
             const submitBtn = document.getElementById('btn-submit-form');
             const submitBtnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
-            if (submitBtnText) submitBtnText.innerText = 'TRANSMITTING SIGNAL...';
+            const originalText = submitBtnText ? submitBtnText.innerText : 'Transmit Signal';
+            
+            if (submitBtnText) submitBtnText.innerText = 'TRANSMITTING...';
+            if (submitBtn) submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+            const dataObj = {};
+            formData.forEach((value, key) => {
+                dataObj[key] = value;
+            });
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(dataObj)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showToast('Signal transmitted successfully to smanoj11@gmail.com!', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .catch(error => {
+                console.error('Submission error:', error);
+                showToast('Transmission failed. Directing to fallback route...', 'error');
+                // Fallback to standard form submission
+                contactForm.submit();
+            })
+            .finally(() => {
+                if (submitBtnText) submitBtnText.innerText = originalText;
+                if (submitBtn) submitBtn.disabled = false;
+            });
         });
     }
 
