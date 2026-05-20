@@ -8,29 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // Initialize DOM references
+    // DOM references
     const navbar = document.querySelector('.navbar');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const pillarTabs = document.querySelectorAll('.pillar-tab');
     const pillarViews = document.querySelectorAll('.pillar-view');
-    const modalCloseButtons = document.querySelectorAll('.modal-close');
-    const modalOverlays = document.querySelectorAll('.modal-overlay');
     const modalOpenButtons = document.querySelectorAll('.btn-open-modal');
-    const terminalInput = document.getElementById('terminal-input');
-    const terminalOutput = document.getElementById('terminal-output');
     const contactForm = document.getElementById('portfolio-contact-form');
+    
+    // Additional buttons for simulation feedback
     const resumeBtn = document.getElementById('btn-resume');
     const mobileResumeBtn = document.getElementById('mobile-btn-resume');
     const portfolioBtn = document.getElementById('btn-portfolio');
     const mobilePortfolioBtn = document.getElementById('mobile-btn-portfolio');
-    const saasDemoBtn = document.getElementById('btn-saas-demo');
 
     /* ==========================================================================
        TOAST NOTIFICATION SYSTEM
        ========================================================================== */
-    const showToast = (message, icon = 'info') => {
+    const showToast = (message, iconType = 'info') => {
         const notificationArea = document.getElementById('notification-area');
         if (!notificationArea) return;
 
@@ -38,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         toast.className = 'toast';
         
         let iconHtml = '<i data-lucide="info"></i>';
-        if (icon === 'success') {
-            iconHtml = '<i data-lucide="check-circle" style="color: var(--accent-green)"></i>';
-        } else if (icon === 'error') {
+        if (iconType === 'success') {
+            iconHtml = '<i data-lucide="check-circle" style="color: #10b981"></i>';
+        } else if (iconType === 'error') {
             iconHtml = '<i data-lucide="alert-triangle" style="color: #ef4444"></i>';
-        } else if (icon === 'terminal') {
-            iconHtml = '<i data-lucide="terminal" style="color: var(--accent-cyan)"></i>';
+        } else if (iconType === 'terminal' || iconType === 'system') {
+            iconHtml = '<i data-lucide="terminal" style="color: #a855f7"></i>';
         }
 
         toast.innerHTML = `
@@ -68,6 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.remove();
             }, 400);
         }, 4000);
+    };
+
+    /* ==========================================================================
+       NO-OP TERMINAL UTILITY (SAFE LOGGER BACKWARD COMPATIBILITY)
+       ========================================================================== */
+    const logToTerminal = (text, type = 'normal') => {
+        console.log(`[System Diagnostic - ${type}]: ${text}`);
     };
 
     /* ==========================================================================
@@ -99,10 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+    
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (mobileNav.classList.contains('active')) {
+            if (mobileNav && mobileNav.classList.contains('active')) {
                 toggleMobileMenu();
             }
         });
@@ -123,31 +130,229 @@ document.addEventListener('DOMContentLoaded', () => {
             pillarViews.forEach(view => {
                 if (view.id === targetPillar) {
                     view.classList.add('active');
-                    // Trigger terminal log
-                    logToTerminal(`[SYSTEM]: Switched perspective active layer to: ${tab.innerText.trim()}`, 'system');
+                    logToTerminal(`Switched perspective active layer to: ${tab.innerText.trim()}`, 'system');
                 } else {
                     view.classList.remove('active');
                 }
             });
+            
+            // Trigger animation updates
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     });
 
     /* ==========================================================================
-       CASE STUDY MODALS CONTROL
+       CASE STUDY DATA & DYNAMIC MODAL ENGINE
        ========================================================================== */
-    const openModal = (modalId) => {
-        const modal = document.getElementById(`modal-${modalId}`);
-        if (!modal) return;
+    const caseStudiesData = {
+        "m1c": {
+            pillar: "Pillar 1: UI/UX & Systems",
+            title: "Agentic Flow Builder",
+            sub: "Visual node editor for multi-agent graph orchestration",
+            image: "assets/pillar1_agent_builder.webp",
+            mainText: `
+                <h3>The Narrative & Challenge</h3>
+                <p>Managing complex agentic workflows requires robust state synchronization, clear visual graphs, and human-in-the-loop validation steps. Hand-coding these complex state structures in long Python files or JSON manifests makes visual debugging almost impossible and slows iteration.</p>
+                <p>To bridge this visual gap, I designed and built an interactive <strong>Orchestration Canvas</strong> that lets teams drag-and-drop agentic components (LLM routers, web scrapers, data parsers) and link their execution tracks dynamically. The canvas automatically validates cycles and compiles the diagram into a production-ready, clean <strong>LangGraph configuration</strong>.</p>
+                <h3>System Design & Responsive UX</h3>
+                <p>The visual editor uses a frosted neobrutalist panel system. High-density controls are organized around clean sidebars, a zoomable main coordinate grid, and a real-time execution telemetry window that reveals execution time and token usage per node.</p>
+                <p>Special care was given to touch interaction, enabling precise drag behaviors and auto-snapping grid configurations across standard screen ratios.</p>
+            `,
+            metrics: [
+                { val: "15+", lbl: "Agent Node Types" },
+                { val: "Real-time", lbl: "Execution Tracing" },
+                { val: "99.1%", lbl: "Graph Compile Accuracy" }
+            ],
+            tags: ["React Flow Canvas", "LangGraph Core", "TypeScript", "Neobrutalist UI", "WebAudio Cues"]
+        },
+        "m1b": {
+            pillar: "Pillar 1: UI/UX & Systems",
+            title: "HealthTech Intake Onboarding",
+            sub: "HIPAA-compliant progressive onboarding flows",
+            image: "assets/pillar1_health_wizard.webp",
+            mainText: `
+                <h3>The Narrative & Challenge</h3>
+                <p>Telehealth platforms lose up to 65% of potential patients during the initial onboarding intake due to long, clinical intake spreadsheets asking for medical history, insurance verifications, and family details simultaneously. The objective was to design a beautiful, calm intake wizard that breaks down a complex 47-field form into a 6-step progressive flow.</p>
+                <h3>Conditional Branching & Branching UX</h3>
+                <p>I architected a step-by-step smart wizard. Patients answer single primary queries (e.g., "Describe your main symptom"). Behind the screen, a conditional logic tree dynamically hides or reveals detailed sub-questions—minimizing clutter. Medical terms are tagged with clean, instant hover-tooltips that explain medical jargon in plain language, avoiding panic or confusion.</p>
+                <h3>Securing the Data Flow</h3>
+                <p>Security is handled progressively. Sensitive information (identity files, insurance records) are uploaded via client-side chunked operations to encrypted buckets, bypassing middleman servers and conforming to strict HIPAA Title II compliance parameters.</p>
+            `,
+            metrics: [
+                { val: "93.4%", lbl: "Form Completion Rate" },
+                { val: "3.2m", lbl: "Average Finish Time" },
+                { val: "HIPAA", lbl: "Compliant Framework" }
+            ],
+            tags: ["Figma Design", "Conditional Logic Tree", "HIPAA Architecture", "Client Encryption", "Calm UI"]
+        },
+        "m2a": {
+            pillar: "Pillar 2: AI Automation",
+            title: "E-Commerce AI Product Pipeline",
+            sub: "Zero-studio product catalog photos at enterprise scale",
+            image: "assets/pillar2_product_pipeline.png",
+            mainText: `
+                <h3>The Narrative & Challenge</h3>
+                <p>Traditional e-commerce catalog production is slow, expensive, and requires studio rentals, lighting rigs, and digital retouchers. Scaling a catalog of 1000+ items across diverse visual settings (office, holiday, outdoor) presents massive bottlenecks.</p>
+                <p>I engineered an automated, serverless pipeline that takes a single smartphone picture of a product and generates 8 distinct, visually consistent, and photorealistic lifestyle assets in seconds.</p>
+                <h3>Pipeline Architecture & Nodes</h3>
+                <p>The system is built as a programmatic ComfyUI node pipeline triggered via a REST API:</p>
+                <ol>
+                    <li><strong>Background Isolation:</strong> <strong>BiRefNet</strong> processes the input image, producing a surgical, high-contrast alpha mask of the target product.</li>
+                    <li><strong>Perspective Matching:</strong> A ControlNet depth model extracts the physical perspective of the item, generating a three-dimensional mapping.</li>
+                    <li><strong>Scene Synthesis:</strong> The <strong>Flux</strong> model uses the depth map to merge the item seamlessly into customizable background settings.</li>
+                    <li><strong>Lighting Calibration:</strong> An automated overlay node normalizes brightness, shadows, and reflection values, locking the visual continuity.</li>
+                    <li><strong>Quality Assurance:</strong> A <strong>CLIP score gate</strong> evaluates output aesthetics against a predefined scale, rejecting anomalies and auto-retrying failures.</li>
+                </ol>
+            `,
+            metrics: [
+                { val: "90%", lbl: "Time Saved vs Studio" },
+                { val: "500+", lbl: "Daily Image Capacity" },
+                { val: "93%", lbl: "Cost Reduction" }
+            ],
+            tags: ["BiRefNet Node", "Flux Diffusion", "ComfyUI Programmatic", "ControlNet", "CLIP Quality Filter"]
+        },
+        "m2b": {
+            pillar: "Pillar 2: AI Automation",
+            title: "Multi-Model AI Content Agent",
+            sub: "LLM-driven orchestrator with automated self-correction",
+            image: "assets/pillar2_content_agent.webp",
+            mainText: `
+                <h3>The Narrative & Challenge</h3>
+                <p>Static prompts fail when generating varied artistic assets because individual AI models are tailored for highly specific styles (e.g., Flux for realistic assets, SDXL for stylized art, Midjourney for editorial layouts). A human operator must manually choose the model, adjust parameters, and review outputs.</p>
+                <p>I built a multi-agent orchestrator that ingests basic text summaries, expands them into high-fidelity image prompts, dynamically routes tasks to the best-performing models, checks outputs against CLIP score thresholds, and auto-corrects prompt variables if failures occur.</p>
+                <h3>Autonomous Orchestration Workflow</h3>
+                <p>Behind the interface, a routing layer maps the target style: photorealistic tasks go to Flux, stylistic layouts go to SDXL, and editorial outputs trigger Midjourney API calls. An autonomous critic evaluates details, checking for typical anatomical defects or text anomalies and returning corrective instruction blocks back to the generator loops if required.</p>
+            `,
+            metrics: [
+                { val: "94%", lbl: "First-Pass Quality Score" },
+                { val: "12s", lbl: "Average Process Speed" },
+                { val: "Zero", lbl: "Human Intervention" }
+            ],
+            tags: ["Claude Multi-Agent", "GPT-4 Vision critic", "Midjourney API", "SDXL/Flux Nodes", "Auto-Correction"]
+        },
+        "m3a": {
+            pillar: "Pillar 3: AI Creative",
+            title: "AI Music Video: \"Neon Mantra\"",
+            sub: "Stitching multi-shot, beat-synced visual narratives",
+            image: "assets/pillar3_music_video.webp",
+            mainText: `
+                <h3>The Narrative & Challenge</h3>
+                <p>Most AI-generated videos look like random compilation montages without cinematic intent, character continuity, or narrative structure. The goal of the "Neon Mantra" project was to direct a professional, full-length 3:30 music video for a psychedelic psytrance track, maintaining strict character locking across shots.</p>
+                <h3>Multi-Model Synthesis & Camera Directing</h3>
+                <p>I established a multi-layered production pipeline:</p>
+                <ul>
+                    <li><strong>Audio Analysis:</strong> A custom audio parser processed the soundtrack, generating a precise timing script mapping beat drops, bassline peaks, and vocal entries.</li>
+                    <li><strong>Model Casting:</strong> Midjourney was used with character locking parameters (<code>--cref</code>) to generate unified visual model reference sheets.</li>
+                    <li><strong>Motion Synthesis:</strong> Kling AI generated the core choreography, animating fluid dance steps and neon robes.</li>
+                    <li><strong>Camera Actions:</strong> Runway Gen-3 was utilized to apply classical cinematic camera work—generating orbital arcs, crane pans, and dolly zoom transitions over static Kling elements.</li>
+                    <li><strong>Color Grading:</strong> The raw shots were compiled, upscaled to 4K using Topaz Video AI, and color-graded in DaVinci Resolve using customized spiritual LUTs.</li>
+                </ul>
+            `,
+            metrics: [
+                { val: "3:30", lbl: "Finished Video Length" },
+                { val: "24", lbl: "Shots with Face-Locking" },
+                { val: "4K", lbl: "Output Resolution" }
+            ],
+            tags: ["Midjourney cref", "Kling Motion", "Runway Camera", "DaVinci Resolve", "Topaz 4K Upscale"]
+        },
+        "m3b": {
+            pillar: "Pillar 3: AI Creative",
+            title: "Luxury Brand Jewelry Lookbook",
+            sub: "High-end visual editorial lookbooks with zero face-drift",
+            image: "assets/pillar3_jewelry_lookbook.webp",
+            mainText: `
+                <h3>The Narrative & Challenge</h3>
+                <p>Luxury print advertising requires absolute anatomical perfection, controlled lighting, and specific product detail accuracy. Showing a single model wearing five distinct jewelry sets (rings, clover pendants, hoop earrings) without the face mutating or the jewelry shape glitching is incredibly difficult for raw AI diffusion models.</p>
+                <h3>Precision Prompting & Style Rigor</h3>
+                <p>I structured a 12-page luxury mock lookbook, locking in an Indian model's facial structure and skin tones across twelve distinct close-up portraits. I utilized localized masking and ControlNet layers to keep jewelry shapes mathematically true to Pandora's geometries, preventing typical AI "hallucination loops". The final layouts incorporate sacred geometric accents and minimal editorial typography, providing high-end commercial fidelity.</p>
+            `,
+            metrics: [
+                { val: "12", lbl: "Cohesive Spreads" },
+                { val: "300", lbl: "DPI Print-Ready Standard" },
+                { val: "0px", lbl: "Face Mutation Tolerance" }
+            ],
+            tags: ["Midjourney seed-lock", "Flux Inpainting", "ControlNet Geometry", "Adobe Indesign Spread", "Luxury Photography Style"]
+        }
+    };
 
+    const injectCaseStudyContent = (data) => {
+        const contentContainer = document.getElementById('modal-dynamic-content');
+        if (!contentContainer) return;
+
+        let metricsHtml = '';
+        if (data.metrics && data.metrics.length > 0) {
+            metricsHtml = `
+                <div class="sidebar-block">
+                    <h4>Key Metrics</h4>
+                    ${data.metrics.map(m => `
+                        <div class="sidebar-stat">
+                            <span class="val">${m.val}</span>
+                            <span class="lbl">${m.lbl}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        let tagsHtml = '';
+        if (data.tags && data.tags.length > 0) {
+            tagsHtml = `
+                <div class="sidebar-block">
+                    <h4>Core Stack</h4>
+                    <div class="sidebar-tags">
+                        ${data.tags.map(t => `<span class="badge">${t}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        contentContainer.innerHTML = `
+            <div class="modal-hero">
+                <img src="${data.image}" alt="${data.title} Case Study" loading="lazy">
+                <div class="modal-header-text">
+                    <span class="tag">${data.pillar}</span>
+                    <h2>${data.title}</h2>
+                    <p class="sub">${data.sub}</p>
+                </div>
+            </div>
+            <div class="modal-body-content">
+                <div class="modal-main">
+                    ${data.mainText}
+                </div>
+                <div class="modal-sidebar">
+                    ${metricsHtml}
+                    ${tagsHtml}
+                </div>
+            </div>
+        `;
+    };
+
+    const modal = document.getElementById('case-study-modal');
+    const closeBtn = document.getElementById('modal-close-btn');
+
+    const openModal = (modalId) => {
+        const data = caseStudiesData[modalId];
+        if (!data || !modal) return;
+
+        // Inject dynamic content
+        injectCaseStudyContent(data);
+
+        // Render Lucide icons inside dynamic content
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Show modal with animation
         modal.classList.add('active');
         document.body.style.overflow = 'hidden'; // Lock main scroll
         
-        // Log event to interactive terminal
-        logToTerminal(`[SYSTEM]: Ingesting case study model packet: [${modalId.toUpperCase()}]`, 'system');
-        logToTerminal(`[SYSTEM]: Rendered progressive disclosure metrics for [${modalId.toUpperCase()}] successfully.`, 'system');
+        logToTerminal(`Ingesting case study model packet: [${modalId.toUpperCase()}]`, 'system');
     };
 
-    const closeModal = (modal) => {
+    const closeModal = () => {
+        if (!modal) return;
         modal.classList.remove('active');
         document.body.style.overflow = ''; // Restore main scroll
     };
@@ -160,169 +365,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    modalCloseButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const modal = btn.closest('.modal-overlay');
-            closeModal(modal);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            closeModal();
         });
-    });
+    }
 
     // Close modal clicking outside the container
-    modalOverlays.forEach(overlay => {
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                closeModal(overlay);
-            }
-        });
-    });
-
-    // Close modals on escape key press
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            modalOverlays.forEach(overlay => {
-                if (overlay.classList.contains('active')) {
-                    closeModal(overlay);
-                }
-            });
-        }
-    });
-
-    /* ==========================================================================
-       INTERACTIVE DEVELOPER TERMINAL SIMULATOR
-       ========================================================================== */
-    const logToTerminal = (text, type = 'normal') => {
-        if (!terminalOutput) return;
-
-        // Keep cursor element references
-        const cursorLine = terminalOutput.querySelector('.terminal-line:last-child');
-        if (cursorLine) {
-            cursorLine.remove();
-        }
-
-        const newLine = document.createElement('div');
-        newLine.className = 'terminal-line';
-
-        if (type === 'system') {
-            newLine.innerHTML = `<span class="cmd-system">${text}</span>`;
-        } else if (type === 'error') {
-            newLine.innerHTML = `<span class="cmd-error">${text}</span>`;
-        } else if (type === 'success') {
-            newLine.innerHTML = `<span class="cmd-highlight">${text}</span>`;
-        } else if (type === 'highlight') {
-            newLine.innerHTML = `<span class="cmd-highlight">${text}</span>`;
-        } else {
-            newLine.innerHTML = `<span class="cmd-text">${text}</span>`;
-        }
-
-        terminalOutput.appendChild(newLine);
-
-        // Add back cursor line
-        const cursorContainer = document.createElement('div');
-        cursorContainer.className = 'terminal-line';
-        cursorContainer.innerHTML = `<span class="cmd-path">smanoj11@builder-node:~$</span> <span class="cmd-cursor"></span>`;
-        terminalOutput.appendChild(cursorContainer);
-
-        // Auto Scroll
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    };
-
-    const processTerminalCommand = (rawInput) => {
-        const input = rawInput.toLowerCase().trim();
-        if (input === '') return;
-
-        // Print executed command
-        logToTerminal(`smanoj11@builder-node:~$ ${rawInput}`, 'normal');
-
-        switch (input) {
-            case 'help':
-                logToTerminal('Available operational parameters:', 'highlight');
-                logToTerminal('  about      - Disclose Manoj\'s build philosophy & focus specs', 'normal');
-                logToTerminal('  pillars    - Enumerate the 4 construction framework nodes', 'normal');
-                logToTerminal('  contact    - Retrieve active technical communication paths', 'normal');
-                logToTerminal('  clear      - Purge historical visual buffer logs', 'normal');
-                break;
-
-            case 'about':
-                logToTerminal('================ MANOJ CORE PHILOSOPHY ================\n' +
-                              'Role: AI Architect, Systems Thinker & Dynamic Builder\n' +
-                              'Mission: Eradicate static layout gaps. Construct production-grade mechanisms.\n' +
-                              'Focus: Progressive disclosure UI designs, multi-model automated workflows, beat engines, and SaaS portals.\n' +
-                              'Time Zone: GMT+5:30 (India Standard Time)\n' +
-                              'Status: Open for strategic pipeline architectures.', 'normal');
-                break;
-
-            case 'pillars':
-                logToTerminal('============= SMANOJ11 ARCHITECTURAL PILLARS =============', 'highlight');
-                logToTerminal('Pillar 1: UI/UX & Systems ("The Systems Thinker")', 'success');
-                logToTerminal('  - High-density progressive disclosure layouts (FinTech, Patient Wizards)', 'normal');
-                logToTerminal('Pillar 2: AI Workflow Automation ("The AI Architect")', 'success');
-                logToTerminal('  - Programmatic headless multi-model pipelines (Flux, BiRefNet, ControlNet)', 'normal');
-                logToTerminal('Pillar 3: AI Video & Creative ("The End-to-End Director")', 'success');
-                logToTerminal('  - Narrative multi-shot visual synthesis & seed-locked brand lookbooks', 'normal');
-                logToTerminal('Pillar 4: Vibe Coding & SaaS ("The Bridge")', 'success');
-                logToTerminal('  - Full-stack speed engineering (SynthPad audio sequencer, Vector RAG SaaS)', 'normal');
-                break;
-
-            case 'contact':
-                logToTerminal('============== ACTIVE PIPELINE CONNECTIONS =============', 'highlight');
-                logToTerminal('Email: smanoj11@gmail.com', 'normal');
-                logToTerminal('Location: Bangalore / Remote', 'normal');
-                logToTerminal('Github: https://github.com/Smanoj11', 'normal');
-                logToTerminal('Transmit details via the lower signal dashboard to establish bridge routing.', 'normal');
-                break;
-
-            case 'clear':
-                // Clear the terminal screen except the first lines
-                terminalOutput.innerHTML = '';
-                const titleLine = document.createElement('div');
-                titleLine.className = 'terminal-line';
-                titleLine.innerHTML = `<span class="cmd-system">Buffer cleared. OS v2.0.26 online.</span>`;
-                terminalOutput.appendChild(titleLine);
-                
-                const cursorContainer = document.createElement('div');
-                cursorContainer.className = 'terminal-line';
-                cursorContainer.innerHTML = `<span class="cmd-path">smanoj11@builder-node:~$</span> <span class="cmd-cursor"></span>`;
-                terminalOutput.appendChild(cursorContainer);
-                break;
-
-            default:
-                logToTerminal(`bash: command not found: ${input}. Type 'help' for operational mappings.`, 'error');
-                break;
-        }
-    };
-
-    if (terminalInput) {
-        terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const command = terminalInput.value;
-                processTerminalCommand(command);
-                terminalInput.value = ''; // Reset input
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
             }
         });
     }
 
+    // Close modals on escape key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
     /* ==========================================================================
-       CONTACT FORM SYSTEM SIGNALS SUBMISSION
-       ========================================================================= */
+       CONTACT FORM ROUTING VIA FORMSUBMIT AJAX
+       ========================================================================== */
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
+            // Extract Values
+            const name = document.getElementById('form-name').value.trim();
+            const email = document.getElementById('form-email').value.trim();
             const subject = document.getElementById('form-subject').value;
-            const message = document.getElementById('form-message').value;
-
+            const message = document.getElementById('form-message').value.trim();
             const submitBtn = document.getElementById('btn-submit-form');
-            const submitBtnText = submitBtn.querySelector('.btn-text');
-            
-            // UI Visual loading feedback
-            submitBtn.disabled = true;
+            const submitBtnText = submitBtn ? submitBtn.querySelector('.btn-text') : null;
+
+            if (!name || !email || !message) {
+                showToast('Please fill out all required systems tags!', 'error');
+                return;
+            }
+
+            // Visual loading feedback
+            if (submitBtn) submitBtn.disabled = true;
             if (submitBtnText) submitBtnText.innerText = 'TRANSMITTING SIGNAL...';
             
-            // Print stream to Terminal
-            logToTerminal(`[SIGNAL TRANSMISSION]: Handshaking established with client packet: ${email}`, 'system');
-            logToTerminal(`[SIGNAL TRANSMISSION]: Commencing secure pipeline upload for subject [${subject.toUpperCase()}]...`, 'system');
+            logToTerminal(`Handshaking established with client packet: ${email}`, 'system');
 
             // Send actual email using FormSubmit AJAX
             fetch("https://formsubmit.co/ajax/smanoj11@gmail.com", {
@@ -341,8 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => {
                 if (response.ok) {
-                    logToTerminal(`[SUCCESS]: Signal successfully routed to Manoj\'s core inbox! Routing vector locked.`, 'success');
-                    showToast('Signal successfully transmitted! I will respond within 12 hours.', 'success');
+                    showToast('Signal successfully routed to Manoj\'s inbox!', 'success');
                 } else {
                     throw new Error('Network response was not ok.');
                 }
@@ -350,13 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => {
                 console.error('Error submitting form:', error);
                 // Fallback success output to guarantee a smooth user experience even if blocked by offline state or strict adblockers
-                logToTerminal(`[SUCCESS]: Signal successfully routed to Manoj\'s core inbox! Routing vector locked (cache mode).`, 'success');
-                showToast('Signal successfully transmitted! I will respond within 12 hours.', 'success');
+                showToast('Signal successfully routed! (Cache-Sync)', 'success');
             })
             .finally(() => {
                 // Reset Form
                 contactForm.reset();
-                submitBtn.disabled = false;
+                if (submitBtn) submitBtn.disabled = false;
                 if (submitBtnText) submitBtnText.innerText = 'Transmit Signal';
             });
         });
@@ -366,59 +453,36 @@ document.addEventListener('DOMContentLoaded', () => {
        BUTTON INTERACTION EXTRAS (SIMULATIONS)
        ========================================================================== */
     if (resumeBtn) {
-        resumeBtn.addEventListener('click', () => {
+        resumeBtn.addEventListener('click', (e) => {
+            // Let normal download happen, but show a nice toast
             showToast('Opening official Manoj_Resume.pdf...', 'terminal');
-            logToTerminal('[SYSTEM]: Client requested official Resume PDF node. Ingesting Manoj_Resume.pdf...', 'system');
-            
-            setTimeout(() => {
-                showToast('Resume PDF loaded successfully!', 'success');
-                logToTerminal('[SYSTEM]: Resume document streamed successfully. 238KB parsed.', 'system');
-            }, 1000);
         });
     }
 
     if (mobileResumeBtn) {
         mobileResumeBtn.addEventListener('click', () => {
             showToast('Opening Manoj_Resume.pdf...', 'terminal');
-            toggleMobileMenu(); // Close mobile nav drawer
+            if (mobileNav && mobileNav.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
     }
 
     if (portfolioBtn) {
-        portfolioBtn.addEventListener('click', () => {
+        portfolioBtn.addEventListener('click', (e) => {
+            // Let normal download happen, but show a nice toast
             showToast('Opening official Manoj_Portfolio.pdf...', 'terminal');
-            logToTerminal('[SYSTEM]: Client requested casebook portfolio node. Ingesting Manoj_ Portfolio.pdf...', 'system');
-            
-            setTimeout(() => {
-                showToast('Portfolio PDF loaded successfully!', 'success');
-                logToTerminal('[SYSTEM]: Portfolio presentation payload routed successfully.', 'system');
-            }, 1000);
         });
     }
 
     if (mobilePortfolioBtn) {
         mobilePortfolioBtn.addEventListener('click', () => {
-            showToast('Opening Manoj_ Portfolio.pdf...', 'terminal');
-            toggleMobileMenu(); // Close mobile nav drawer
+            showToast('Opening Manoj_Portfolio.pdf...', 'terminal');
+            if (mobileNav && mobileNav.classList.contains('active')) {
+                toggleMobileMenu();
+            }
         });
     }
-
-    if (saasDemoBtn) {
-        saasDemoBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showToast('Simulating pgvector RAG query ingestion...', 'terminal');
-            logToTerminal('[RAG SaaS]: Ingesting document query: "Explain Manoj\'s primary tech stack..."', 'system');
-            
-            setTimeout(() => {
-                logToTerminal('[RAG SaaS]: Fetching cosine similarity matches from Supabase vector space...', 'system');
-                setTimeout(() => {
-                    logToTerminal('[RAG SaaS]: Found 3 match clusters (Similarity > 0.89). Content synthesis locked.', 'success');
-                    showToast('RAG Cosine match returned successfully!', 'success');
-                }, 800);
-            }, 800);
-        });
-    }
-
     /* ==========================================================================
        SCROLL REVEAL INTERSECT OBSERVER
        ========================================================================== */
